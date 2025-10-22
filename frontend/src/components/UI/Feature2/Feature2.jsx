@@ -1,0 +1,34 @@
+import { useEffect, useState } from 'react'
+import classes from './Feature2.module.css'
+import SmallCourseCard from './SmallCourseCard/SmallCourseCard.jsx'
+
+export default function Feature2() {
+
+  const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/courses/courses')
+    .then(response => response.json())
+    .then(data => setCourses(data))
+    .catch(error => console.log(error))
+
+  }, [])
+
+  return (
+    <section className={classes.container}>
+      <h2 className='heading-2'>Explore Popular Courses</h2>
+      <div className={`${classes.cardList}`}>
+        {courses.map((course) => {
+          return (<SmallCourseCard 
+            key={course.id} 
+            name={course.name}
+            description={course.description}
+            image_url={course.image_url}
+          />)
+        })}
+      </div>
+      <a href="" className={`main-text ${classes.viewCourses}`}> > View all Courses</a>
+    </section>
+  )
+
+}

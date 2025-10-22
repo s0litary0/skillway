@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf)
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMonoNL-Medium.ttf)
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMonoNL-ExtraBold.ttf)
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+:root {
+  font-family: "JetBrains Mono", monospace;
+  --primary-color: #2b9348;
+  --secondary-color: #dddf00;
+  --text-color-black: rgba(0, 0, 0, 0.55);
+  --text-color-white: rgba(255, 255, 255);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+.main-text {
+  font-family: 'JetBrains Mono';
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.03;
+  color: var(--text-color-black);
+}
+
+/* .heading-1 {
+
+} */
+
+.heading-2 {
+  font-family: 'JetBrains Mono';
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.03;
+}
+
+.heading-3 {
+  font-family: 'JetBrains Mono';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
