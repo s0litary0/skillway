@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function TestimonialCard({children, ...props}) {
 
-  const [avatarIndex] = useState(1)
+  const [avatarIndex] = useState(Math.floor(Math.random() * 3) + 1)
 
   return (
     <div className={classes.card}>

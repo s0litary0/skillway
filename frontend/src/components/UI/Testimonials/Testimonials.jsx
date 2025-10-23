@@ -31,10 +31,12 @@ export default function Testimonials() {
             async programming, ES6 features, and performance optimization.  " 
           </TestimonialCard>
           <TestimonialCard author={'Alexander'}>
-     
+            "I started this course with zero knowledge of databases, and now I can confidently write 
+            SQL queries to manage real data."
           </TestimonialCard>
           <TestimonialCard author={'Roman'}>
- 
+            "This course helped me finally understand how Java works. 
+            The instructor explained complex topics like OOP and loops in a simple way."
           </TestimonialCard>
         </div>
         <div className={`${classes.group} ${!spin ? classes.paused : ''}`} aria-hidden>
@@ -49,10 +51,12 @@ export default function Testimonials() {
             async programming, ES6 features, and performance optimization.  " 
           </TestimonialCard>
           <TestimonialCard author={'Alexander'}>
-     
+            "I started this course with zero knowledge of databases, and now I can confidently write 
+            SQL queries to manage real data."
           </TestimonialCard>
           <TestimonialCard author={'Roman'}>
- 
+            "This course helped me finally understand how Java works. 
+            The instructor explained complex topics like OOP and loops in a simple way."
           </TestimonialCard>
         </div>
       </div>
