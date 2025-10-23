@@ -10,6 +10,6 @@ from .serializers import CourseSerializer
 class CoursesView(APIView):
 
     def get(self, request):
-        courses = Course.objects.all().order_by('id')
+        courses = Course.objects.all().order_by('?')
         serializer = CourseSerializer(courses, many=True)
-        return Response(serializer.data[:4], status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -5,7 +5,7 @@ export default function SmallCourseCard({name, description, image_url}) {
     <div className={classes.card}>
       <div className={classes.textArea}>
         <h3 className={`heading-3 ${classes.title}`}>{name}</h3>
-        <p className={`main-text ${classes.text}`}>{description ? description.slice(0, 80) + "..." : "null"}</p>
+        <p className={`main-text ${classes.text}`}>{description ? description.slice(0, 75) + "..." : "null"}</p>
       </div>
       {image_url 
       ? <img className={classes.courseImage} src={image_url} alt="course image" />

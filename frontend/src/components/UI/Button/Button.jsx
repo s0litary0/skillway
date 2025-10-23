@@ -1,3 +1,5 @@
+import classes from './Button.module.css'
+
 export default function Button({ children, onClick, className = "" }) {
   return (
     <button
@@ -6,10 +8,9 @@ export default function Button({ children, onClick, className = "" }) {
             text-(--text-color-white) 
             text-[24px]/[1.4] font-bold 
             transition duration-75 ease
-            ${className}`}
+            ${className} ${classes.btn}`}
       onClick={onClick}
     >
-      {" "}
       {children}
     </button>
   );
