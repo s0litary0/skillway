@@ -1,0 +1,1305 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "accounts",
+    "model": "profile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "accounts",
+    "model": "userstats"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "tasktype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "course"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "enrollment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "lesson"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "task"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "submission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "courses",
+    "model": "multiplechoicequestion"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "achievements",
+    "model": "achievementcriteria"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "achievements",
+    "model": "userachievement"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "achievements",
+    "model": "achievement"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "achievements",
+    "model": "leaderboard"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "achievements",
+    "model": "leaderboardentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add profile",
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "codename": "add_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change profile",
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "codename": "change_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete profile",
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "codename": "delete_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view profile",
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "codename": "view_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user stats",
+    "content_type": [
+      "accounts",
+      "userstats"
+    ],
+    "codename": "add_userstats"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user stats",
+    "content_type": [
+      "accounts",
+      "userstats"
+    ],
+    "codename": "change_userstats"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user stats",
+    "content_type": [
+      "accounts",
+      "userstats"
+    ],
+    "codename": "delete_userstats"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user stats",
+    "content_type": [
+      "accounts",
+      "userstats"
+    ],
+    "codename": "view_userstats"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add task type",
+    "content_type": [
+      "courses",
+      "tasktype"
+    ],
+    "codename": "add_tasktype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change task type",
+    "content_type": [
+      "courses",
+      "tasktype"
+    ],
+    "codename": "change_tasktype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete task type",
+    "content_type": [
+      "courses",
+      "tasktype"
+    ],
+    "codename": "delete_tasktype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view task type",
+    "content_type": [
+      "courses",
+      "tasktype"
+    ],
+    "codename": "view_tasktype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add course",
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "codename": "add_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change course",
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "codename": "change_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete course",
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "codename": "delete_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view course",
+    "content_type": [
+      "courses",
+      "course"
+    ],
+    "codename": "view_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add enrollment",
+    "content_type": [
+      "courses",
+      "enrollment"
+    ],
+    "codename": "add_enrollment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change enrollment",
+    "content_type": [
+      "courses",
+      "enrollment"
+    ],
+    "codename": "change_enrollment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete enrollment",
+    "content_type": [
+      "courses",
+      "enrollment"
+    ],
+    "codename": "delete_enrollment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view enrollment",
+    "content_type": [
+      "courses",
+      "enrollment"
+    ],
+    "codename": "view_enrollment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add lesson",
+    "content_type": [
+      "courses",
+      "lesson"
+    ],
+    "codename": "add_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change lesson",
+    "content_type": [
+      "courses",
+      "lesson"
+    ],
+    "codename": "change_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete lesson",
+    "content_type": [
+      "courses",
+      "lesson"
+    ],
+    "codename": "delete_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view lesson",
+    "content_type": [
+      "courses",
+      "lesson"
+    ],
+    "codename": "view_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add task",
+    "content_type": [
+      "courses",
+      "task"
+    ],
+    "codename": "add_task"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change task",
+    "content_type": [
+      "courses",
+      "task"
+    ],
+    "codename": "change_task"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete task",
+    "content_type": [
+      "courses",
+      "task"
+    ],
+    "codename": "delete_task"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view task",
+    "content_type": [
+      "courses",
+      "task"
+    ],
+    "codename": "view_task"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add submission",
+    "content_type": [
+      "courses",
+      "submission"
+    ],
+    "codename": "add_submission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change submission",
+    "content_type": [
+      "courses",
+      "submission"
+    ],
+    "codename": "change_submission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete submission",
+    "content_type": [
+      "courses",
+      "submission"
+    ],
+    "codename": "delete_submission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view submission",
+    "content_type": [
+      "courses",
+      "submission"
+    ],
+    "codename": "view_submission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add multiple choice question",
+    "content_type": [
+      "courses",
+      "multiplechoicequestion"
+    ],
+    "codename": "add_multiplechoicequestion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change multiple choice question",
+    "content_type": [
+      "courses",
+      "multiplechoicequestion"
+    ],
+    "codename": "change_multiplechoicequestion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete multiple choice question",
+    "content_type": [
+      "courses",
+      "multiplechoicequestion"
+    ],
+    "codename": "delete_multiplechoicequestion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view multiple choice question",
+    "content_type": [
+      "courses",
+      "multiplechoicequestion"
+    ],
+    "codename": "view_multiplechoicequestion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add achievement criteria",
+    "content_type": [
+      "achievements",
+      "achievementcriteria"
+    ],
+    "codename": "add_achievementcriteria"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change achievement criteria",
+    "content_type": [
+      "achievements",
+      "achievementcriteria"
+    ],
+    "codename": "change_achievementcriteria"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete achievement criteria",
+    "content_type": [
+      "achievements",
+      "achievementcriteria"
+    ],
+    "codename": "delete_achievementcriteria"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view achievement criteria",
+    "content_type": [
+      "achievements",
+      "achievementcriteria"
+    ],
+    "codename": "view_achievementcriteria"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user achievement",
+    "content_type": [
+      "achievements",
+      "userachievement"
+    ],
+    "codename": "add_userachievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user achievement",
+    "content_type": [
+      "achievements",
+      "userachievement"
+    ],
+    "codename": "change_userachievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user achievement",
+    "content_type": [
+      "achievements",
+      "userachievement"
+    ],
+    "codename": "delete_userachievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user achievement",
+    "content_type": [
+      "achievements",
+      "userachievement"
+    ],
+    "codename": "view_userachievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add achievement",
+    "content_type": [
+      "achievements",
+      "achievement"
+    ],
+    "codename": "add_achievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change achievement",
+    "content_type": [
+      "achievements",
+      "achievement"
+    ],
+    "codename": "change_achievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete achievement",
+    "content_type": [
+      "achievements",
+      "achievement"
+    ],
+    "codename": "delete_achievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view achievement",
+    "content_type": [
+      "achievements",
+      "achievement"
+    ],
+    "codename": "view_achievement"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add leaderboard",
+    "content_type": [
+      "achievements",
+      "leaderboard"
+    ],
+    "codename": "add_leaderboard"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change leaderboard",
+    "content_type": [
+      "achievements",
+      "leaderboard"
+    ],
+    "codename": "change_leaderboard"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete leaderboard",
+    "content_type": [
+      "achievements",
+      "leaderboard"
+    ],
+    "codename": "delete_leaderboard"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view leaderboard",
+    "content_type": [
+      "achievements",
+      "leaderboard"
+    ],
+    "codename": "view_leaderboard"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add leaderboard entry",
+    "content_type": [
+      "achievements",
+      "leaderboardentry"
+    ],
+    "codename": "add_leaderboardentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change leaderboard entry",
+    "content_type": [
+      "achievements",
+      "leaderboardentry"
+    ],
+    "codename": "change_leaderboardentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete leaderboard entry",
+    "content_type": [
+      "achievements",
+      "leaderboardentry"
+    ],
+    "codename": "delete_leaderboardentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view leaderboard entry",
+    "content_type": [
+      "achievements",
+      "leaderboardentry"
+    ],
+    "codename": "view_leaderboardentry"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$HKBj8eJbUEZtibRWXIdbrJ$eU1kjeX9lrVFMRAEQU2k4y7R8poJMkiLVXmDKUWFbaY=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "sultan",
+    "first_name": "",
+    "last_name": "",
+    "email": "sultanbaibolov1@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-27T07:43:11.126Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "123",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "solitary",
+    "first_name": "Dave",
+    "last_name": "Jhonson",
+    "email": "hello@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-16T09:21:06.194Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "aL6@~s>Q<Nq",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "fdenyer0",
+    "first_name": "Frederich",
+    "last_name": "Denyer",
+    "email": "fdenyer0@posterous.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-16T09:23:41.519Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "123",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "pmcsporon0",
+    "first_name": "Padget",
+    "last_name": "McSporon",
+    "email": "pmcsporon0@i2i.jp",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-16T09:27:48.987Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "123",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "dalbany1",
+    "first_name": "Albany",
+    "last_name": "Dionne",
+    "email": "dalbany1@pagesperso-orange.fr",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-16T09:29:46.895Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "role": "S"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "role": "S"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "role": "T"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 5,
+  "fields": {
+    "role": "T"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 6,
+  "fields": {
+    "role": "A"
+  }
+},
+{
+  "model": "accounts.userstats",
+  "pk": 1,
+  "fields": {
+    "courses_completed": 0,
+    "courses_in_progress": 0
+  }
+},
+{
+  "model": "accounts.userstats",
+  "pk": 2,
+  "fields": {
+    "courses_completed": 0,
+    "courses_in_progress": 0
+  }
+},
+{
+  "model": "accounts.userstats",
+  "pk": 3,
+  "fields": {
+    "courses_completed": 0,
+    "courses_in_progress": 0
+  }
+},
+{
+  "model": "accounts.userstats",
+  "pk": 5,
+  "fields": {
+    "courses_completed": 0,
+    "courses_in_progress": 0
+  }
+},
+{
+  "model": "accounts.userstats",
+  "pk": 6,
+  "fields": {
+    "courses_completed": 0,
+    "courses_in_progress": 0
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "name": "Python Beginner",
+    "description": "A Python beginner course teaches the fundamental concepts of programming, starting with basic syntax, variables, and data types, and progressing to control flow (loops and conditionals), data structures like lists, and functions.",
+    "image_url": "src/assets/imgs/python_logo.svg",
+    "category": "Programming",
+    "difficulty_level": "E",
+    "author": [
+      "fdenyer0"
+    ],
+    "created_at": "2025-10-16T09:39:33.995Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "name": "Python Intermediate",
+    "description": "This short, intermediate Python course aims to elevate participants from foundational Python knowledge to a more advanced understanding, enabling them to write more complex, efficient, and well-structured code. The course focuses on practical application and problem-solving, building upon core programming concepts.",
+    "image_url": "src/assets/imgs/python_logo.svg",
+    "category": "Programming",
+    "difficulty_level": "M",
+    "author": [
+      "fdenyer0"
+    ],
+    "created_at": "2025-10-16T09:41:29.559Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 4,
+  "fields": {
+    "name": "JavaScript Beginner",
+    "description": "This course introduces the fundamentals of JavaScript, a core technology for web development. Participants will learn basic syntax, data types (strings, numbers, booleans), variables (var, let, const), and operators.",
+    "image_url": "src/assets/imgs/js_logo.svg",
+    "category": "Programming",
+    "difficulty_level": "E",
+    "author": [
+      "pmcsporon0"
+    ],
+    "created_at": "2025-10-16T09:40:34.300Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 5,
+  "fields": {
+    "name": "JavaScript Intermediate",
+    "description": "Building upon foundational knowledge, this course delves into more complex JavaScript concepts. Topics include advanced DOM manipulation, event handling, working with arrays and objects (including common methods), and error handling using try-catch blocks.",
+    "image_url": "src/assets/imgs/js_logo.svg",
+    "category": "Programming",
+    "difficulty_level": "M",
+    "author": [
+      "pmcsporon0"
+    ],
+    "created_at": "2025-10-16T09:41:12.436Z"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 6,
+  "fields": {
+    "name": "JavaScript Advanced",
+    "description": "This course focuses on advanced JavaScript features and modern development practices. Key areas include closures, advanced asynchronous programming with async/await, and an in-depth exploration of object-oriented patterns and classes.",
+    "image_url": "src/assets/imgs/js_logo.svg",
+    "category": "Programming",
+    "difficulty_level": "H",
+    "author": [
+      "pmcsporon0"
+    ],
+    "created_at": "2025-10-16T09:40:03.911Z"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "sultan"
+    ],
+    "course": 1,
+    "enrolled_at": "2025-10-16T09:43:13.311Z",
+    "progress": "0.00"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "solitary"
+    ],
+    "course": 1,
+    "enrolled_at": "2025-10-16T09:43:25.887Z",
+    "progress": "0.00"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "sultan"
+    ],
+    "course": 4,
+    "enrolled_at": "2025-10-16T09:44:41.052Z",
+    "progress": "0.00"
+  }
+},
+{
+  "model": "courses.enrollment",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "sultan"
+    ],
+    "course": 5,
+    "enrolled_at": "2025-10-16T09:44:44.581Z",
+    "progress": "0.00"
+  }
+}
+]
