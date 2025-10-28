@@ -1,0 +1,111 @@
+.hero {
+  width: 100%;
+  min-width: none;
+  margin: 4rem 5rem;
+  padding: 0 6rem;
+  /* border: 1px solid red; */
+}
+
+.grid-container {
+  width: 55%;
+  margin: 0 auto;
+  /* border: 1px solid green; */
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 2rem;
+  place-items: center;
+}
+
+.grid-item {
+  width: 100%;
+}
+
+@media (width <= 600px) {
+  .grid-container {
+    width: 80%;
+  }
+}
+
+@media (600px <= width <= 997px) {
+  .grid-container {
+    width: 70%;
+  }
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+
+.flex-item {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.title {
+  opacity: 0;
+  transform: translateY(10%);
+  animation: slide-in 1s 200ms forwards;
+}
+
+.description {
+  display: inline;
+  font-size: 1.5rem;
+  /* border: 1px solid blue; */
+  opacity: 0;
+  transform: translateY(20%);
+  animation: slide-in 1s 400ms forwards;
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  } 
+}
+
+
+.btn-container { 
+  /* border: 1px solid white; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30%);
+  animation: slide-in 1s 600ms forwards;
+}
+
+.btn-container Button {
+  flex: 0 1 auto;
+}
+
+@media (width <= 600px) {
+
+  .btn-container Button {
+  flex: 1 1 auto;
+}
+}
+
+.btn-container .btn1 {
+  background-color: var(--primary);
+  color: var(--bg-dark);
+  border: 0.1rem solid var(--border-muted);
+}
+
+.btn-container .btn1:hover {
+  background-color: var(--secondary);
+}
+
+.btn-container .btn2 {
+  background-color: var(--text);
+  color: var(--bg-dark);
+  border: 0.1rem solid var(--border-muted);
+}
+
+.btn-container .btn2:hover {
+  background-color: var(--text-muted);
+}

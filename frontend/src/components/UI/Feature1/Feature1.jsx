@@ -6,7 +6,7 @@ export default function Feature1() {
       className={classes.container}
     >
       <div>
-        <h2 className="heading-2">Learn the Way That Fits You</h2>
+        <h2>Learn the Way That Fits You</h2>
         <p className={`${classes.paragraph} main-text`}>
           SkillWay is an adaptive online learning platform that personalizes
           your educational journey. Whether you're mastering mathematics,
@@ -17,7 +17,7 @@ export default function Feature1() {
       <img
         src="src/assets/illustrations/feature1.jpg"
         alt=""
-        className="w-[640px] h-[480px]"
+        className={classes.image}
       />
     </section>
   );

@@ -1,72 +1,112 @@
-@import "tailwindcss";
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMono-Bold.ttf)
-    format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMonoNL-Medium.ttf)
-    format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url(/fonts/JetBrainsMono-2.304/fonts/ttf/JetBrainsMonoNL-ExtraBold.ttf)
-    format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
+@import url("fonts.css");
+/* @import "tailwindcss"; */
 
 :root {
-  font-family: "JetBrains Mono", monospace;
-  --primary-color: #2b9348;
-  --secondary-color: #dddf00;
-  --text-color-black: rgba(0, 0, 0, 0.55);
-  --text-color-white: rgba(255, 255, 255);
+  --bg-dark: oklch(0.1 0.06 260);
+  --bg: oklch(0.15 0.06 260);
+  --bg-light: oklch(0.2 0.06 260);
+  --text: oklch(0.96 0.1 260);
+  --text-muted: oklch(0.76 0.1 260);
+  --highlight: oklch(0.5 0.12 260);
+  --border: oklch(0.4 0.12 260);
+  --border-muted: oklch(0.3 0.12 260);
+  --primary: oklch(0.76 0.12 260);
+  --secondary: oklch(0.76 0.12 80);
+  --danger: oklch(0.7 0.12 30);
+  --warning: oklch(0.7 0.12 100);
+  --success: oklch(0.7 0.12 160);
+  --info: oklch(0.7 0.12 260);
+}
+
+body.dark {
+  --bg-dark: oklch(0.1 0.06 260);
+  --bg: oklch(0.15 0.06 260);
+  --bg-light: oklch(0.2 0.06 260);
+  --text: oklch(0.96 0.1 260);
+  --text-muted: oklch(0.76 0.1 260);
+  --highlight: oklch(0.5 0.12 260);
+  --border: oklch(0.4 0.12 260);
+  --border-muted: oklch(0.3 0.12 260);
+  --primary: oklch(0.76 0.12 260);
+  --secondary: oklch(0.76 0.12 80);
+  --danger: oklch(0.7 0.12 30);
+  --warning: oklch(0.7 0.12 100);
+  --success: oklch(0.7 0.12 160);
+  --info: oklch(0.7 0.12 260);
 }
 
 html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-size: 16px;
 }
 
-body {
-  height: 100%;
+/* @media (600px <= width <= 992px) {
+  html {
+    font-size: 12px;
+  }
 }
 
-.main-text {
-  font-family: 'JetBrains Mono';
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.1;
-  letter-spacing: -0.03;
-  color: var(--text-color-black);
-}
-
-/* .heading-1 {
-
+@media (max-width: 600px) {
+  html {
+    font-size: 8px;
+  }
 } */
 
-.heading-2 {
-  font-family: 'JetBrains Mono';
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  background-color: var(--bg-dark);
+  color: var(--text-muted)
+}
+
+a {
+  position: relative;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover {
+  color: var(--secondary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.text {
+  font-family: "JetBrains Mono", 'Courier New', Courier, monospace;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.03;
+  color: var(--text-muted);
+}
+
+h1 {
+  font-family: "JetBrains Mono", 'Courier New', Courier, monospace;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: -0.03;
+  color: var(--text)
+}
+
+h2 {
+  font-family: "JetBrains Mono", 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 2rem;
   line-height: 1.1;
   letter-spacing: -0.03;
 }
 
-.heading-3 {
-  font-family: 'JetBrains Mono';
+h3 {
+  font-family: "JetBrains Mono";
   font-weight: 700;
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.03;
 }
