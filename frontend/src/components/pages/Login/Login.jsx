@@ -1,4 +1,7 @@
 import { useState } from "react";
+import classes from './Login.module.css'
+import Button from '../../UI/Button/Button.jsx'
+import { Link } from 'react-router-dom'
 
 
 export default function Login() {
@@ -43,22 +46,38 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text"
-        placeholder="username"
-        value={formData.username}
-        name="username"
-        onChange={handleChange}
-        required 
-      />
-      <input type="password"
-        placeholder="password"
-        value={formData.password}
-        name="password"
-        onChange={handleChange}
-        required 
-      />
-      <button onClick={handleSubmit}>Login</button>
-    </form>
+    <div className={`${classes.container}`}>
+      <img src="imgs/pexels-pixabay-159711.jpg" className={`${classes["bg-img"]}`} alt="" />
+      <div className={`${classes["form-container"]}`}>
+
+        <form onSubmit={handleSubmit}>
+          <img src="icons/skillway_logo.png" style={{width: '3rem', height: '3rem'}} alt="" />
+          <div className={`${classes.welcome}`}>
+            <h1 className={`${classes.title}`}>Log in</h1>
+            <p>Don't have an account? <Link to="/register">Sign up</Link></p>
+          </div>
+
+          <div className={`${classes.line}`}/>
+
+          <input type="text"
+            placeholder="username"
+            value={formData.username}
+            name="username"
+            onChange={handleChange}
+            required 
+          />
+          <input type="password"
+            placeholder="password"
+            value={formData.password}
+            name="password"
+            onChange={handleChange}
+            required 
+          />
+          <Button onClick={handleSubmit}>Login</Button>
+        </form>
+
+
+      </div>
+    </div>
   )
 }
