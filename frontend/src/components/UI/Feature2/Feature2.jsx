@@ -15,7 +15,7 @@ export default function Feature2() {
 
   return (
     <section className={classes.container}>
-      <h2 className={`heading-2 ${classes.title}`}>Explore Popular Courses</h2>
+      <h2 className={`${classes.title}`}>Explore Popular Courses</h2>
       <div className={`${classes.cardList}`}>
         {courses.slice(0, 4).map((course) => {
           return (<SmallCourseCard 
@@ -31,7 +31,7 @@ export default function Feature2() {
         alert(JSON.stringify(courses))
       }} 
         href="" 
-        className={`main-text ${classes.viewCourses}`}
+        className={`text ${classes.viewCourses}`}
       > 
         &gt; View all Courses
       </a>

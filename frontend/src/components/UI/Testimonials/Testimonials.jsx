@@ -14,8 +14,8 @@ export default function Testimonials() {
   return (
     <section className={classes.container}>
       <div className={classes.textArea}>
-        <h2 className={`heading-2 ${classes.title}`}>Testimonials</h2>
-        <p className={`main-text ${classes.text}`}>Here's what people are saying</p>
+        <h2 className={`${classes.title}`}>Testimonials</h2>
+        <p className={`text ${classes.text}`}>Here's what people are saying</p>
         <Toggle className={classes.toggle} onToggle={handleToggle}/>
       </div>
       <div className={classes.testimonialsCarousele}>

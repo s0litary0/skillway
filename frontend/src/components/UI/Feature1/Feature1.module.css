@@ -12,14 +12,15 @@
 }
 
 .paragraph {
-  margin-top: 24px;
+  margin-top: 1.5rem;
   font-size: 1.5rem;;
 }
 
 .text-container {
   width: 70%;
   text-align: justify;
-  background-color: var(--bg);
+  background-color: var(--bg-light);
+  border-radius: 1rem;
   padding: 1rem;
 }
 

@@ -1,11 +1,14 @@
 import Button from "../Button/Button";
 import classes from './Hero.module.css'
+import { useNavigate } from "react-router-dom";
 
 
 export default function Hero({ children, title, btns }) {
 
-  const handleClick = () => {
-    alert("Goes to another page")
+  const navigate = useNavigate()
+
+  const handleClick = (path) => {
+    navigate(path)
   }
 
   return (
@@ -17,11 +20,11 @@ export default function Hero({ children, title, btns }) {
         </header>
 
         <footer className={`${classes["grid-item"]} ${classes["btn-container"]}`}>
-          <Button onClick={handleClick} className={classes.btn1}>
-            {btns.btn1}
+          <Button onClick={() => handleClick(btns.btn1.path)} className={classes.btn1}>
+            {btns.btn1.title}
           </Button>
-          <Button onClick={handleClick} className={classes.btn2}>
-            {btns.btn2}
+          <Button onClick={() => handleClick(btns.btn2.path)} className={classes.btn2}>
+            {btns.btn2.title}
           </Button>
         </footer>
       </div>

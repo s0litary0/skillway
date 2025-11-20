@@ -23,6 +23,7 @@ export default function Registration() {
 
   let handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("submitting")
 
     if (formData.password !== formData.password2) {
       console.error("passwords doesn't match");
@@ -58,7 +59,7 @@ export default function Registration() {
 
   return (
     <div className={`${classes["grid-container"]}`}>
-      <form onSubmit={handleSubmit} className={`${classes["form-container"]}`}>
+      <form className={`${classes["form-container"]}`}>
         
         <div className={classes.welcome}>
           <h1 style={{fontSize: '2rem'}}>Welcome to SkillWay</h1>
@@ -108,7 +109,7 @@ export default function Registration() {
 
         <div className={classes["btn-container"]}>
           <p>By creating an account. you agree to the <a>Terms of use</a> and <a>Privacy Policy.</a></p>
-          <Button className={classes.btn}>Register</Button>
+          <Button onClick={handleSubmit} className={classes.btn}>Register</Button>
           <p>Already have an account? <Link to="/login">Log in</Link></p>
         </div>
       </form>

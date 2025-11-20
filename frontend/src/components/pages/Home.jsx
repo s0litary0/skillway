@@ -10,17 +10,17 @@ export default function Home() {
   return (
     <div className={classes.home}>
       <Navigation></Navigation>
-      <Hero title={'Unlock Your Full Potential with SkillWay'} btns={{btn1: 'Start learning', btn2: 'Try demo'}}>
+      <Hero title={'Unlock Your Full Potential with SkillWay'} btns={{btn1: {title: 'Start learning', path: '/courses'}, btn2: {title: 'Try demo', path: '/demo'}}}>
         Learn smarter, faster, and better through interactive lessons and
         AI-powered guidance.
       </Hero>
       <Feature1 />
-      {/*<Feature2 />
+      <Feature2 />
       <Testimonials />
-      <Hero title={'Start Your Journey Today'} btns={{btn1: 'Sign up now', btn2: 'Explore courses'}}> 
+      <Hero title={'Start Your Journey Today'} btns={{btn1: {title: 'Sign up now', path: "/register"}, btn2: {title: 'Explore courses', path: "/courses"}}}> 
         Join thousands of learners already improving their skills with SkillWay. 
         Your next step toward success begins here. 
-      </Hero> */}
+      </Hero>
     </div>
     
   );
