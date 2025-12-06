@@ -142,3 +142,10 @@ h3 {
   line-height: 1.1;
   letter-spacing: -0.03;
 }
+
+.header-link {
+  font-family: "JetBrains Mono";
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
