@@ -1,9 +1,41 @@
-from dataclasses import field
-from rest_framework.serializers import ModelSerializer
-from .models import Course
+from rest_framework import serializers
+from .models import Course, Enrollment, Lesson, Task, TaskType, Submission
 
+class TaskTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskType
+        fields = '__all__'
 
-class CourseSerializer(ModelSerializer):
+class SubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Submission
+        fields = '__all__'
+
+class TaskSerializer(serializers.ModelSerializer):
+    task_type = TaskTypeSerializer(read_only=True)
+    submissions = SubmissionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Task
+        fields = '__all__'
+
+class LessonSerializer(serializers.ModelSerializer):
+    tasks = TaskSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Lesson
+        fields = '__all__'
+
+class CourseSerializer(serializers.ModelSerializer):
+    lessons = LessonSerializer(many=True, read_only=True)
+
     class Meta:
         model = Course
+        fields = '__all__'
+
+class EnrollmentSerializer(serializers.ModelSerializer):
+    course = CourseSerializer(read_only=True) 
+
+    class Meta:
+        model = Enrollment
         fields = '__all__'

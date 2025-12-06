@@ -1,8 +1,8 @@
-import Hero from "../UI/Hero/Hero.jsx";
-import Feature1 from "../UI/Feature1/Feature1.jsx";
-import Feature2 from "../UI/Feature2/Feature2.jsx";
-import Testimonials from "../UI/Testimonials/Testimonials.jsx";
-import Navigation from "../layouts/Navigation/Navigation.jsx"
+import Hero from "../../UI/Hero/Hero.jsx";
+import Feature1 from "../../UI/Feature1/Feature1.jsx";
+import Feature2 from "../../UI/Feature2/Feature2.jsx";
+import Testimonials from "../../UI/Testimonials/Testimonials.jsx";
+import Navigation from "../../layouts/Navigation/Navigation.jsx"
 import classes from "./Home.module.css"
 
 
