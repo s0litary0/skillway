@@ -12,14 +12,14 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined']
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Profile
         fields = ['user', 'role']
 
 class UserStatsSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = UserStats
@@ -48,7 +48,9 @@ class RegisterSerializer(serializers.Serializer):
         return attrs
 
     def create(self, validated_data):
-        print(validated_data)
+        # print(validated_data)
         validated_data.pop('password2')
         user = User.objects.create_user(**validated_data)
+        Profile.objects.create(user=user, role='S')
+        UserStats.objects.create(user=user)
         return user
