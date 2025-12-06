@@ -5,6 +5,7 @@
   z-index: 1000;
   background-color: var(--bg);
   /* border: 0.125rem solid var(--bg-light); */
+  border-bottom: 0.1rem solid var(--border);
   font-size: 16px;
 }
 
@@ -24,6 +25,7 @@
 
 .logo {
   width: 2rem;
+  height: 2rem;
 }
 
 .item {
@@ -38,7 +40,7 @@ span a::after {
   height: 0.1rem;
   background-color: var(--highlight);
   position: absolute;
-  bottom: -0.1rem;
+  bottom: -0.3rem;
   left: 0;
   transform: scaleX(0);
   transform-origin: left;
@@ -47,4 +49,9 @@ span a::after {
 
 span a:hover::after {
   transform: scaleX(1);
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--text)
 }
