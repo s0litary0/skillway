@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
-import Registration from '../../pages/Registration/Registration'
-import Login from '../../pages/Login/Login'
-
-import classes from './Navigation.module.css'
+import classes from './Nav.module.css'
 
 
-export default function Navigation() {
+export default function Nav() {
   return (
     <div className={`${classes.container}`}>
       <nav className={`${classes["nav-bar"]} text`}>

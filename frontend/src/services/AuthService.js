@@ -1,3 +1,6 @@
+import api from "./api"
+
+
 export default class AuthService {
     static async login(email, password) {
         const response = await fetch("http://localhost:8000/api/accounts/token/", {
@@ -60,7 +63,26 @@ export default class AuthService {
       return false;
     }
 
-    static getUser(username) {
-      
+    static async loginApi(data) {
+      const response = await api.post("accounts/token/", data);
+      return response.data; // contains access & refresh tokens
+    }
+
+    static async registerApi(data) {
+      const response = await api.post("accounts/register/", data);
+      return response.data;
+    }
+
+    static async regreshToken(refresh) {
+      const response = await api.post("accounts/token/refresh/", { refresh });
+      return response.data.access;
+    }
+
+    static async getMeApi(token) {
+      const response = await api.get("accounts/me/", {
+        headers: {
+        Authorization: `Bearer ${token}`,
+      }})
+      return response.data
     }
 }
