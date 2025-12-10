@@ -9,7 +9,7 @@ import classes from "./Home.module.css"
 export default function Home() {
   return (
     <div className={classes.home}>
-      <Navigation></Navigation>
+
       <Hero title={'Unlock Your Full Potential with SkillWay'} btns={{btn1: {title: 'Start learning', path: '/courses'}, btn2: {title: 'Try demo', path: '/demo'}}}>
         Learn smarter, faster, and better through interactive lessons and
         AI-powered guidance.
