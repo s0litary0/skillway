@@ -54,7 +54,42 @@ span a:hover::after {
   transform: scaleX(1);
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+  /* width: 15rem; */
+  /* border: 1px solid red; */
+}
+
 a:hover {
   text-decoration: none;
   color: var(--text)
+}
+
+.login {
+  margin-right: 1rem;
+}
+
+.user {
+  margin-right: 1rem;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-img {
+  display: block;
+  object-fit: cover;
+  height: 3rem;
+  width: 3rem;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+.logout {
+  cursor: pointer;
 }

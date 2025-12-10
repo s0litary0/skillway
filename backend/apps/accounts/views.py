@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from django.contrib.auth import get_user_model
+from rest_framework import generics
+
 
 from .serializers import (
     UserSerializer, ProfileSerializer, UserStatsSerializer, RegisterSerializer
@@ -13,7 +15,7 @@ User = get_user_model()
 
 # List all users or create a user (admin use)
 class UsersView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
         users = User.objects.all()
@@ -27,6 +29,34 @@ class UsersView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class UserRetrieveView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    # permission_classes = [permissions.IsAuthenticated]  # optional
+    lookup_field = 'id'  # use URL parameter to get user by id
+    def retrieve(self, request, *args, **kwargs):
+        """
+        Override retrieve to include Profile and UserStats.
+        """
+        user = self.get_object()
+
+        try:
+            profile = Profile.objects.get(user=user)
+            profile_data = ProfileSerializer(profile).data
+        except Profile.DoesNotExist:
+            profile_data = None
+
+        try:
+            stats = UserStats.objects.get(user=user)
+            stats_data = UserStatsSerializer(stats).data
+        except UserStats.DoesNotExist:
+            stats_data = None
+
+        return Response({
+            'user': UserSerializer(user).data,
+            'profile': profile_data,
+            'stats': stats_data
+        })
 
 # Registration endpoint
 class RegisterView(APIView):

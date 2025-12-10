@@ -1,4 +1,5 @@
 import api from "./api"
+import { jwtDecode } from "jwt-decode"
 
 
 export default class AuthService {
@@ -73,16 +74,22 @@ export default class AuthService {
       return response.data;
     }
 
-    static async regreshToken(refresh) {
-      const response = await api.post("accounts/token/refresh/", { refresh });
+    static async refreshToken(refresh) {
+      console.log("refreshing token")
+      const response = await fetch("http://127.0.0.1:8000/api/accounts/token/refresh/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh }),
+      });
       return response.data.access;
     }
 
     static async getMeApi(token) {
-      const response = await api.get("accounts/me/", {
-        headers: {
-        Authorization: `Bearer ${token}`,
-      }})
-      return response.data
+      console.log("decoding")
+      const decoded = jwtDecode(token)
+      const response = await fetch("http://127.0.0.1:8000/api/accounts/users/" + decoded.user_id)
+      return response
     }
 }

@@ -1,0 +1,5 @@
+.block-container {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+}

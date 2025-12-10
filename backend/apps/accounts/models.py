@@ -11,6 +11,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     role = models.CharField(max_length=1, choices=ROLES_CHOICES)
+    avatar_base64 = models.TextField(blank=True, null=True)
 
 class UserStats(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

@@ -153,3 +153,23 @@ AUTHENTICATION_BACKENDS = [
     # Application custom auth backend
     'apps.accounts.custom_backend.AuthentificationBackend',
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'rest_framework_simplejwt': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}

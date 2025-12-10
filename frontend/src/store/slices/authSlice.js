@@ -22,7 +22,9 @@ export const fetchMe = createAsyncThunk("auth/fetchMe", async () => {
   // setAuthToken(localStorage.getItem("access"));
   console.log("Token: ", localStorage.getItem("access"))
   const data = await AuthService.getMeApi(localStorage.getItem("access"));
-  return data;
+  const data_json = await data.json();
+  console.log("Me: ", data_json)
+  return data_json
 });
 
 // Slice
