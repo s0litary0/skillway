@@ -2,14 +2,14 @@ import Hero from "../../UI/Hero/Hero.jsx";
 import Feature1 from "../../UI/Feature1/Feature1.jsx";
 import Feature2 from "../../UI/Feature2/Feature2.jsx";
 import Testimonials from "../../UI/Testimonials/Testimonials.jsx";
-import Navigation from "../../layouts/Navigation/Navigation.jsx"
+import Navigation from "../../layouts/Nav/Nav.jsx"
 import classes from "./Home.module.css"
 
 
 export default function Home() {
   return (
     <div className={classes.home}>
-      {/* <Navigation></Navigation> */}
+      <Navigation></Navigation>
       <Hero title={'Unlock Your Full Potential with SkillWay'} btns={{btn1: {title: 'Start learning', path: '/courses'}, btn2: {title: 'Try demo', path: '/demo'}}}>
         Learn smarter, faster, and better through interactive lessons and
         AI-powered guidance.

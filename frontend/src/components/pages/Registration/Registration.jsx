@@ -2,8 +2,7 @@ import classes from "./Registration.module.css"
 import { useState } from "react";
 import Button from '../../UI/Button/Button.jsx'
 import { Link, useNavigate } from "react-router-dom";
-import AuthService from "../../../services/authService.js";
-
+import AuthService from "../../../services/AuthService.js";
 export default function Registration() {
 
   const navigate = useNavigate();

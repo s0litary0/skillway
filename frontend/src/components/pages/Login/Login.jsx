@@ -2,16 +2,18 @@ import { useState } from "react";
 import classes from './Login.module.css'
 import Button from '../../UI/Button/Button.jsx'
 import { Link, useNavigate } from 'react-router-dom'
-import AuthService from "../../../services/authService.js";
+import AuthService from "../../../services/AuthService.js";
+import { useAuth } from "../../../hooks"
+import Spinner from "../../UI/Spinner/Spinner.jsx";
+
 
 export default function Login() {
-
+  const { loginUser, loading, error } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
-  const [errorMessage, setErrorMessage] = useState("")
 
   function handleChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -19,14 +21,8 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
-    try {
-      await AuthService.login(formData.email, formData.password);
-      navigate("/profile")
-    } catch (e) {
-      console.error("Error occured: ", e.message)
-      setErrorMessage(e.message)
-    }
+    loginUser(formData.email, formData.password);
+    navigate("/profile")
   }
 
   return (
@@ -58,7 +54,8 @@ export default function Login() {
             required 
           />
           <Button className={classes.btn}>Login</Button>
-          {errorMessage && <p className={classes["error-message"]}>{ errorMessage }</p>}
+          {error && <p className={classes["error-message"]}>{ error }</p>}
+          {loading && <Spinner />}
         </form>
       </div>
     </div>
