@@ -1,0 +1,9 @@
+.footer-container {
+    height: 28rem;
+    background-color: var(--bg-light);
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8rem;
+}
+

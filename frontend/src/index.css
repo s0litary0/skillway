@@ -143,6 +143,14 @@ h3 {
   letter-spacing: -0.03;
 }
 
+h4 {
+  font-family: "JetBrains Mono";
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  letter-spacing: -0.02;
+}
+
 .header-link {
   font-family: "JetBrains Mono";
   font-weight: 800;
