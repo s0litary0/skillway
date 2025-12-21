@@ -1,6 +1,15 @@
 @import url("fonts.css");
 /* @import "tailwindcss"; */
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.main-layout {
+  flex: 1;
+}
+
 :root {
   /* hsl (fallback color) */
   --bg-dark: hsl(336 0% 1%);

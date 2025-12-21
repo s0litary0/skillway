@@ -4,5 +4,7 @@ from .views import *
 urlpatterns = [
     path('accounts/', include('apps.accounts.urls')),
     path('courses/', include('apps.courses.urls')),
+    path('achievements/', include('apps.achievements.urls')),
+    path('groups/', include('apps.groups.urls'))
 ]
 

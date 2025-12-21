@@ -1,0 +1,34 @@
+.course-enroll-page {
+    padding: 4rem 8rem;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+}
+
+.enroll-container {
+    width: 60%;
+}
+
+.course-instructors-list {
+    color: var(--text);
+}
+
+.instructor-avatar {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.instructor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.enroll-btn {
+    color: var(--text);
+}
+
+.already-enrolled {
+    color: var(--text);
+}

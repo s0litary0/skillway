@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.courses',
     'apps.achievements',
+    'apps.groups',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

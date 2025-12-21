@@ -1,0 +1,22 @@
+.search-container {
+    display: flex;
+    margin: 0rem 0rem 3rem;
+}
+
+.search-input {
+    height: 2.5rem;
+    width: 20rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    color: var(--text-muted);
+}
+.search-input:focus {
+    outline: none;
+    border: 1px solid var(--highlight);
+}
+
+.search-container img {
+    position: relative;
+    right: 2.5rem;
+}

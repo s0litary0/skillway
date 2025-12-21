@@ -1,0 +1,65 @@
+.course-learning-page {
+    padding: 4rem 8rem;
+}
+
+.course-modules {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+.lessons-list {
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.lesson-block {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid var(--highlight);
+}
+
+.lesson-block__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 3rem;
+    font-size: 1.3rem;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.lesson-toggle-btn {
+    transition: none;
+    font-size: 1.3rem;
+    color: var(--text);
+    background-color: transparent;
+    border: none;
+}
+
+.lesson-toggle-btn:hover {
+    scale: 1.05;
+    background-color: transparent;
+}
+
+.lesson-tasks {
+    font-size: 1.1rem;
+}
+
+.task-block {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid var(--highlight);
+    padding-left: 8rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.task-name {
+    color: var(--text);
+}

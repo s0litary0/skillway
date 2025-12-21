@@ -3,7 +3,7 @@ import classes from "./Nav.module.css";
 import { useAuth } from "../../../hooks";
 
 export default function Nav() {
-  const { user, logoutUser } = useAuth();
+  const { user, profile, logoutUser } = useAuth();
 
   return (
     <div className={`${classes.container}`}>
@@ -42,7 +42,7 @@ export default function Nav() {
                 <span className={`${classes["user"]}`}>
                   <Link to="/profile" className={`${classes["username"]}`}>
                     <img
-                      src=""
+                      src={profile.avatar_base64}
                       alt="img"
                       className={`${classes["user-img"]}`}
                     />

@@ -1,0 +1,59 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 40rem;
+  text-align: center;
+  max-height: 80vh;
+  padding: 3rem;
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.friends-select {
+  list-style: none;
+  max-height: 5rem;
+  overflow-y: auto;
+  color: var(--text);
+  margin-bottom: 16px;
+  /* margin-left: -1rem; */
+}
+.friends-select label {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-light);
+  cursor: pointer;
+  margin-bottom: .3rem;
+  padding: 0rem 1rem;
+}
+
+.friends-select label:hover {
+    background-color: var(--highlight);
+}
+
+.friends-select label input {
+  width: 2rem;
+  accent-color: var(--secondary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

@@ -1,0 +1,23 @@
+.language-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.language-switcher button {
+  padding: 6px 12px;
+  /* border: 1px solid #ccc; */
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.language-switcher button.active {
+  background-color: var(--primary);
+  /* background-color: #007bff; */
+  color: white;
+  /* border-color: #007bff; */
+}
+
+.language-switcher button:hover {
+  color: var(--text);
+}

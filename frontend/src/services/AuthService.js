@@ -92,4 +92,9 @@ export default class AuthService {
       const response = await fetch("http://127.0.0.1:8000/api/accounts/users/" + decoded.user_id)
       return response
     }
+    static async getUser(userId) {
+      const response = await api.get(`accounts/users/${userId}`)
+      console.log("User", response.data)
+      return response.data
+    }
 }

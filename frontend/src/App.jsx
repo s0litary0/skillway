@@ -1,12 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import "./i18n"; 
 import Registration from "./components/pages/Registration/Registration.jsx";
 import Login from "./components/pages/Login/Login.jsx";
 import Home from "./components/pages/Home/Home.jsx";
 import Profile from "./components/pages/Profile/Profile.jsx";
-import Nav from "./components/layouts/Nav/Nav.jsx";
 import Layout from "./components/layouts/Layout/Layout.jsx";
 import Protected from "./components/Protected/Protected.jsx";
+import Courses from "./components/pages/Courses/Courses.jsx";
+import CourseEnroll from "./components/pages/CourseEnroll/CourseEnroll.jsx"
+import CourseLearning from "./components/pages/CourseLearning/CourseLearning.jsx"
+import Dashboard from "./components/pages/Dashboard/Dashboard.jsx";
+import Task from "./components/pages/Task/Task.jsx";
+import Leaderboard from "./components/pages/Leaderboard/Leaderboard.jsx";
+import About from "./components/pages/About/About.jsx";
+import Groups from "./components/pages/Groups/Groups.jsx";
+
 
 const App = () => {
   return (
@@ -16,6 +24,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
           <Route
             path="/profile"
             element={
@@ -28,7 +37,7 @@ const App = () => {
             path="/dashboard"
             element={
               <Protected>
-                <Profile />
+                <Dashboard />
               </Protected>
             }
           />
@@ -36,7 +45,7 @@ const App = () => {
             path="/courses"
             element={
               <Protected>
-                <Profile />
+                <Courses />
               </Protected>
             }
           />
@@ -52,7 +61,15 @@ const App = () => {
             path="/courses/:courseId/learn"
             element={
               <Protected>
-                <CourseLearn />
+                <CourseLearning />
+              </Protected>
+            }
+          />
+          <Route
+            path="/courses/:courseId/learn/task/:taskId"
+            element={
+              <Protected>
+                <Task />
               </Protected>
             }
           />
@@ -60,7 +77,15 @@ const App = () => {
             path="/groups"
             element={
               <Protected>
-                <Profile />
+                <Groups />
+              </Protected>
+            }
+          />
+          <Route
+            path="/leaderboards"
+            element={
+              <Protected>
+                <Leaderboard />
               </Protected>
             }
           />

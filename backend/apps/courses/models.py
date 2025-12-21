@@ -10,7 +10,7 @@ class Course(models.Model):
 
     name = models.CharField(max_length=100)
     description = models.TextField(null=True)
-    image_url = models.URLField(max_length=200, null=True)
+    image_base64 = models.TextField(blank=True, null=True)
     category = models.CharField(max_length=100)
     difficulty_level = models.CharField(max_length=1, choices=DIFFICULTY_LEVELS)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses_taught')
@@ -32,10 +32,12 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} enrolled in {self.course.name}"
+    
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
     name = models.CharField(max_length=100)
     description = models.TextField()
+    content = models.TextField(blank=True, null=True)
     order = models.PositiveBigIntegerField(default=1)
     duration = models.DurationField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,6 +54,7 @@ class Task(models.Model):
     task_type = models.ForeignKey('TaskType', on_delete=models.SET_NULL, null=True, related_name='tasks')
     name = models.CharField(max_length=100)
     description = models.TextField()
+    content = models.TextField(blank=True, null=True)
     order = models.PositiveIntegerField(default=1)
     max_score = models.PositiveBigIntegerField(default=0)
     pass_score = models.PositiveBigIntegerField(default=0)
@@ -88,16 +91,20 @@ class MultipleChoiceQuestion(models.Model):
     option_c = models.CharField(max_length=150)
     option_d = models.CharField(max_length=150)
     correct_option = models.CharField(max_length=1, choices=ANSWER_OPTIONS)
-    explnation = models.TextField(null=True, blank=True)
+    explanation = models.TextField(null=True, blank=True)
     def __str__(self):
         return f"MCQ: {self.question[:50]}..."
 
 class Submission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='submissions')
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='submissions')
-    score = models.DecimalField(max_digits=6, decimal_places=2)
+    answer = models.CharField(max_length=255)
+    is_correct = models.BooleanField()
     submitted_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ("user", "task")
+
     def __str__(self):
-        return f"{self.user.username} submitted to {self.task.name} and got {self.score}"
+        return f"{self.user.username} submitted to {self.task.name} and got {self.is_correct}"
     
