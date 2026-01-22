@@ -1,0 +1,10 @@
+.theme-switcher {
+  margin-right: 1rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  outline: none;
+  background-color: var(--bg-light);
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono';
+}

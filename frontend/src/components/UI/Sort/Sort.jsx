@@ -1,7 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import "./Sort.css";
+import { useTranslation } from "react-i18next";
 
 export default function Sort() {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentSort = searchParams.get("sort") || "";
 
@@ -19,14 +21,14 @@ export default function Sort() {
 
   return (
     <div className="sort-container">
-      <img src="icons/sort-alt.svg" alt="sort-icon" />
-      <label>Sort: </label>
+      <img src="icons/sort-alt.svg" alt={t("sort_icon")} />
+      <label>{t("sort_label")}: </label>
       <select value={currentSort} onChange={handleSortChange}>
-        <option value="">Select sort...</option>
-        <option value="-created_at">Newest</option>
-        <option value="created_at">Oldest</option>
-        <option value="difficulty_level">Difficulty (Low → High)</option>
-        <option value="-difficulty_level">Difficulty (High → Low)</option>
+        <option value="">{t("sort_select")}</option>
+        <option value="-created_at">{t("sort_newest")}</option>
+        <option value="created_at">{t("sort_oldest")}</option>
+        <option value="difficulty_level">{t("sort_difficulty_low_high")}</option>
+        <option value="-difficulty_level">{t("sort_difficulty_high_low")}</option>
       </select>
     </div>
   );

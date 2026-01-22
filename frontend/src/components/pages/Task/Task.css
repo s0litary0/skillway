@@ -50,11 +50,11 @@
 
 .current-task {
     font-weight: 900;
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
     padding: .3rem;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     /* font-size: 1.1em; */
-    /* border-bottom: 1px solid var(--highlight); */
+    border-bottom: 3px solid var(--secondary);
 }
 
 .side-panel__task-name {
@@ -68,6 +68,7 @@
 
 .side-panel > ul {
     padding: 0;
+    /* color: var(--bg); */
     /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
@@ -86,7 +87,7 @@
 
 .mcq-feedback-explanation.success {
     background-color: var(--success);
-    color: var(--text);
+    color: var(--bg);
     height: 3rem;
     display: flex;
     align-items: center;
@@ -97,7 +98,7 @@
 
 .mcq-feedback-explanation.error {
     background-color: var(--danger);
-    color: var(--text);
+    color: var(--bg);
     height: 3rem;
     display: flex;
     align-items: center;
@@ -108,7 +109,7 @@
 
 .mcq-explanation {
     background-color: var(--info);
-    color: var(--text);
+    color: var(--bg);
     padding-left: 3rem;
     height: 3rem;
     display: flex;

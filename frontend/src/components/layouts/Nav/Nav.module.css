@@ -6,6 +6,7 @@
   z-index: 1000;
   background-color: var(--bg);
   border-bottom: 0.1rem solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 .nav-list {
@@ -92,4 +93,15 @@ a:hover {
 
 .logout {
   cursor: pointer;
+}
+
+.langSelect {
+  margin-right: 1rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  outline: none;
+  background-color: var(--bg-light);
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono';
 }

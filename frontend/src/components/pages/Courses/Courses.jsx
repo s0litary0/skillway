@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import CourseListService from "../../../services/CoursesListService";
 import Card from "../../UI/Card/Card";

@@ -6,9 +6,10 @@ import api from "../../../services/api";
 import { useState, useEffect } from "react";
 import { fileToBase64 } from "../../../utils";
 import LangSwitch from "../../UI/LangSwitch/LangSwitch";
-
+import { useTranslation } from "react-i18next";
 
 export default function Profile() {
+  const { t } = useTranslation();
   const [avatarPreview, setAvatarPreview] = useState(null);
   const { user, profile, stats, loading } = useAuth();
 
@@ -40,33 +41,36 @@ export default function Profile() {
     console.log("Avatar updated:", res.data);
   }
 
-  console.log(user, profile, stats);
   return (
     <div className="profile-page">
       <Block className="username-block">
         <label htmlFor="avatarInput">
-          {avatarPreview ? <img src={avatarPreview}/> : <img src="icons/add.svg" className="add-avatar" />}
+          {avatarPreview ? (
+            <img src={avatarPreview} />
+          ) : (
+            <img src="icons/add.svg" className="add-avatar" />
+          )}
           <input type="file" accept="image/*" onChange={handleFile} id="avatarInput"/>
         </label>
         <h2>{user.username}</h2>
       </Block>
+
       <Block className="user-info">
-        <h2>User info</h2>
+        <h2>{t("user_info")}</h2>
         <ul>
-          <li>Email: {user.email}</li>
-          <li>First name: {user.first_name}</li>
-          <li>Last name: {user.last_name}</li>
-          <li>Courses in progress: {stats.courses_in_progress}</li>
-          <li>Courses completed: {stats.courses_completed}</li>
-          <li>Date joined: {new Date(user.date_joined).toDateString()}</li>
+          <li>{t("email")}: {user.email}</li>
+          <li>{t("first_name")}: {user.first_name}</li>
+          <li>{t("last_name")}: {user.last_name}</li>
+          <li>{t("courses_in_progress")}: {stats.courses_in_progress}</li>
+          <li>{t("courses_completed")}: {stats.courses_completed}</li>
+          <li>{t("date_joined")}: {new Date(user.date_joined).toDateString()}</li>
         </ul>
       </Block>
+
       <Block className="achievements-block">
-        <h2>Language</h2>
-        {/* <p>...in progress</p> */}
+        <h2>{t("language")}</h2>
         <LangSwitch />
       </Block>
-      {/* <Spinner /> */}
     </div>
   );
 }

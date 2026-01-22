@@ -1,5 +1,8 @@
 .dashboard-page {
     margin: 4rem 8rem;
+    color: var(--text-muted);
+    /* border: 1px solid red; */
+    /* background-color: transparent; */
 }
 
 .dashboard__courses-list {
@@ -31,6 +34,7 @@
 
 .progress-text {
     margin-left: 2rem;
+    color: var(--bg);
 }
 
 .dashboard-course-info {
@@ -49,6 +53,8 @@
 
 .dashboard-course-card {
     position: relative;
+    /* border: 1px solid red; */
+    /* background-color: transparent; */
 }
 
 .dashboard-resume-btn {
@@ -65,6 +71,7 @@
 
 .drop-course-btn {
     border: none;
+    box-shadow: none;
     background-color: transparent;
     color: var(--danger);
     font-size: 1.2rem;

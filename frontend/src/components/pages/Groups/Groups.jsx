@@ -9,8 +9,10 @@ import Spinner from "../../UI/Spinner/Spinner";
 import Button from "../../UI/Button/Button";
 import AuthService from "../../../services/AuthService";
 import CreateGroupModal from "../../UI/Modal/Modal";
+import { useTranslation } from "react-i18next";
 
 export default function Groups() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const currentUser = user;
   const [searchParams] = useSearchParams();
@@ -28,7 +30,6 @@ export default function Groups() {
     const loadFriends = async () => {
       try {
         const data = await GroupsService.getFriends(user.id);
-        // console.log(data);
 
         const friendsWithAvatars = await Promise.all(
           data.map(async (friend) => {
@@ -46,11 +47,11 @@ export default function Groups() {
         setFriends(friendsWithAvatars);
       } catch (err) {
         console.error(err);
-        setError("Failed to load friends");
+        setError(t("friends_load_failed"));
       }
     };
     loadFriends();
-  }, [user]);
+  }, [user, t]);
 
   const searchForUsers = async (search) => {
     const usersData = await GroupsService.searchUsersByUsername(search);
@@ -78,9 +79,13 @@ export default function Groups() {
 
     const fetchGroup = async () => {
       try {
+        console.log(user.id)
         const data = await GroupsService.getGroup(user.id);
-        console.log("Group fetched: ", data);
-
+        if (data.length == 0) {
+          // const notOwner = await Groups.getGroup
+          setGroup(null)
+          return 
+        }
         const memberIds = data[0].members.map(member => member.id);
 
         const membersWithAvatars = await Promise.all(
@@ -93,14 +98,12 @@ export default function Groups() {
             };
           }),
         );
-    
+
         const enrichedGroup = {
           ...data[0],
           members: membersWithAvatars,
         };
-        console.log("enriched", enrichedGroup);
         setGroup(enrichedGroup);
-
       } catch (err) {
         console.error(err.message);
       }
@@ -108,15 +111,13 @@ export default function Groups() {
     fetchGroup();
   }, [user]);
 
-  //   Add friend
   const handleAddFriend = async (friendId) => {
     try {
       const newFriend = await GroupsService.addFriend(user.id, friendId);
       setFriends((prev) => [...prev, newFriend]);
-      // setSearchResults((prev) => prev.filter((u) => u.id !== friendId));
     } catch (err) {
       console.error(err);
-      setError("Failed to add friend");
+      setError(t("friend_add_failed"));
     }
   };
 
@@ -124,9 +125,7 @@ export default function Groups() {
   const closeModal = () => setIsCreateOpen(false);
 
   const createGroup = async ({ name, members }) => {
-    console.log(name, members);
     const data = await GroupsService.createGroup(name, user.id, members);
-    console.log(data);
 
     const memberIds = [user.id, ...members];
 
@@ -145,47 +144,38 @@ export default function Groups() {
       ...data,
       members: membersWithAvatars,
     };
-    console.log("enriched", enrichedGroup);
     setGroup(enrichedGroup);
   };
 
-  const addMember = async () => {
-  };
+  const addMember = async () => {};
   const removeMember = async () => {};
 
   if (!currentUser) {
     return <Spinner />;
   }
 
-  //   console.log(searchedUsers);
-
   return (
     <div className="groups-page">
-      <h1>Find Friends</h1>
+      <h1>{t("find_friends")}</h1>
       <Block className="users-search-block">
-        <Search placeholder={"Search friends..."} />
+        <Search placeholder={t("search_friends")} />
 
         {searchQuery && (
           <div className="search-results">
-            <h3>Search Results</h3>
+            <h3>{t("search_results")}</h3>
 
-            {searchQuery && !searchedUsers.length && <p>No users found</p>}
+            {searchQuery && !searchedUsers.length && <p>{t("no_users_found")}</p>}
 
             <ul className="users-list">
               {searchedUsers.map((user) => {
-                if (user.id == currentUser.id) {
-                  return;
-                }
+                if (user.id === currentUser.id) return null;
                 return (
                   <li key={user.id} className="users-list__record">
                     <div>
-                      <img
-                        className="user-img"
-                        src={user.profile.avatar_base64}
-                      />
-                      <span>{user.username} </span>
+                      <img className="user-img" src={user.profile.avatar_base64} />
+                      <span>{user.username}</span>
                       <Button onClick={() => handleAddFriend(user.id)}>
-                        Add Friend
+                        {t("add_friend")}
                       </Button>
                     </div>
                   </li>
@@ -198,18 +188,18 @@ export default function Groups() {
       </Block>
 
       <Block className="friends-list">
-        <h3 className="friends-title">Your Friends</h3>
+        <h3 className="friends-title">{t("your_friends")}</h3>
 
         {friends.length === 0 ? (
-          <p className="friends-empty">No friends yet</p>
+          <p className="friends-empty">{t("no_friends_yet")}</p>
         ) : (
           <ul className="friends-items">
             {friends.map((f) => (
               <li key={f.id} className="friend-item">
                 <span>
-                  <img className="user-img" src={f.user1_avatar} />
+                  <img className="user-img" src={f.user2.id == user.id ? f.user1_avatar : f.user2_avatar} />
                 </span>
-                <span className="friend-name">{f.user1.username}</span>
+                <span className="friend-name">{f.user2.id == user.id ? f.user1.username : f.user2.username}</span>
               </li>
             ))}
           </ul>
@@ -218,44 +208,36 @@ export default function Groups() {
 
       <CreateGroupModal
         isOpen={isCreateOpen}
-        onClose={() => setIsCreateOpen(false)}
+        onClose={closeModal}
         onCreate={createGroup}
         friends={friends}
       />
 
       {!group ? (
         <Block className="group-block create">
-          <Button onClick={openModal}>Create group</Button>
+          <Button onClick={openModal}>{t("create_group")}</Button>
         </Block>
       ) : (
         <Block className="group-block">
           <header className="group-header">
             <h2 className="group-title">{group?.name}</h2>
             <span className="group-count">
-              {group?.members?.length} member
-              {group?.members.length !== 1 && "s"}
+              {t("member_count", { count: group?.members?.length })}
             </span>
           </header>
 
           <ul className="group-members">
             {group?.members?.length === 0 ? (
-              <li className="group-empty">No members yet</li>
+              <li className="group-empty">{t("no_members_yet")}</li>
             ) : (
               group?.members?.map((member) => (
                 <li key={member.id} className="group-member">
                   <div className="member-info">
-                    <img
-                      src={member.avatar}
-                      alt={member.username}
-                      className="user-img"
-                    />
+                    <img src={member.avatar} alt={member.username} className="user-img" />
                     <span className="member-name">{member.username}</span>
                   </div>
 
-                  <Button
-                    className="member-remove"
-                    onClick={() => removeMember(member.user_id)}
-                  >
+                  <Button className="member-remove" onClick={() => removeMember(member.user_id)}>
                     ✕
                   </Button>
                 </li>
@@ -264,7 +246,7 @@ export default function Groups() {
           </ul>
 
           <Button className="group-add-btn" onClick={addMember}>
-            + Add member
+            + {t("add_member")}
           </Button>
         </Block>
       )}

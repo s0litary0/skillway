@@ -59,10 +59,14 @@ export default class GroupsService {
   static async getGroup(ownerId) {
     const response = await api.get(`groups/groups/`, {
         params: {
-            owner_id: ownerId
+            owner: ownerId
         }
     })
     return response.data
   }
+
+  // static async getGroupByMemberId(memberId) {
+
+  // }
 
 }

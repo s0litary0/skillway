@@ -1,97 +1,101 @@
-import classes from "./Registration.module.css"
+import classes from "./Registration.module.css";
 import { useState } from "react";
-import Button from '../../UI/Button/Button.jsx'
+import Button from '../../UI/Button/Button.jsx';
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../../services/AuthService.js";
-export default function Registration() {
+import { useTranslation } from "react-i18next";
 
+export default function Registration() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: '',    
-    password2: '',    
-  })
-  const [errorMessage, setErrorMessage] = useState("")
+    password: '',
+    password2: '',
+  });
+  const [errorMessage, setErrorMessage] = useState("");
 
   let handleChange = (e) => {
     setFormData({
       ...formData, [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting")
-
     try {
-      await AuthService.register(formData.username, formData.email, formData.password, formData.password2)
-      navigate("/profile")
+      await AuthService.register(formData.username, formData.email, formData.password, formData.password2);
     } catch (e) {
-      setErrorMessage(e.message)
-      console.error(errorMessage)
+      setErrorMessage(e.message);
+      console.error(errorMessage);
     }
-  }
+    navigate("/profile");
+  };
 
   return (
     <div className={`${classes["grid-container"]}`}>
       <form className={`${classes["form-container"]}`} onSubmit={handleSubmit}>
-        
         <div className={classes.welcome}>
-          <h1 style={{fontSize: '2rem'}}>Welcome to SkillWay</h1>
-          <p>Already have an account? <Link to="/login">Log in</Link></p>
+          <h1 style={{ fontSize: '2rem' }}>{t("welcome_to_skillway")}</h1>
+          <p>
+            {t("already_have_account")} <Link to="/login">{t("login")}</Link>
+          </p>
         </div>
 
         <label>
-          <span>Username</span>
+          <span>{t("username")}</span>
           <input type="text"
             value={formData.username}
             name="username"
             onChange={handleChange}
-            required 
+            required
           />
         </label>
 
         <label>
-          <span>Email</span>
+          <span>{t("email")}</span>
           <input type="email"
             value={formData.email}
             name="email"
             onChange={handleChange}
-            required 
+            required
           />
         </label>
 
         <label>
-          <span>Password</span>
+          <span>{t("password")}</span>
           <input type="password"
             value={formData.password}
             name="password"
             onChange={handleChange}
-            required 
+            required
           />
         </label>
 
         <label>
-          <span>Confirm your password</span>
+          <span>{t("confirm_password")}</span>
           <input type="password"
             value={formData.password2}
             name="password2"
             onChange={handleChange}
-            required 
+            required
           />
         </label>
 
         <div className={classes["btn-container"]}>
-          <p>By creating an account. you agree to the <a>Terms of use</a> and <a>Privacy Policy.</a></p>
-          <Button className={classes.btn}>Register</Button>
-          <p>Already have an account? <Link to="/login">Log in</Link></p>
+          <p>
+            {t("agree_terms")} <a>{t("terms_of_use")}</a> {t("and")} <a>{t("privacy_policy")}</a>.
+          </p>
+          <Button className={classes.btn}>{t("register")}</Button>
+          <p>
+            {t("already_have_account")} <Link to="/login">{t("login")}</Link>
+          </p>
         </div>
-        {errorMessage && <p className={classes["error-message"]}>{ errorMessage }</p>}
+        {errorMessage && <p className={classes["error-message"]}>{errorMessage}</p>}
       </form>
 
-      <img className={`${classes.img}`} src="imgs/pexels-olly-3762800.jpg" alt="student"/>
-
+      <img className={`${classes.img}`} src="imgs/pexels-olly-3762800.jpg" alt="student" />
     </div>
-  )
+  );
 }

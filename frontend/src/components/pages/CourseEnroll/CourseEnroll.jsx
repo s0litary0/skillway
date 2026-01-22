@@ -69,6 +69,8 @@ export default function CourseEnroll() {
     return <Spinner />;
   }
 
+  console.log(course)
+
   return (
     <div className="course-enroll-page">
       <div className="enroll-container">
@@ -93,11 +95,11 @@ export default function CourseEnroll() {
         </Button>
         <p className="already-enrolled">{enrollments} already enrolled</p>
       </div>
-      <img src={course.image_base64} alt="123" />
+      <img src={"/" + course.image_base64} className="course-img"/>
       <div className="detailed-info-container">
-        <p> {} Lessons </p>
+        {/* <p> {} Lessons </p>
         <p> {} Level </p>
-        <p> {} Created at </p>
+        <p> {} Created at </p> */}
       </div>
     </div>
   );

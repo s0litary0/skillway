@@ -26,9 +26,19 @@
 }
 
 .enroll-btn {
-    color: var(--text);
+    /* color: var(--text); */
 }
 
 .already-enrolled {
     color: var(--text);
+}
+
+.course-img {
+    display: block;
+    object-fit: cover;
+    width: 30rem;
+}
+
+.course-description {
+    color: var(--text-muted);
 }

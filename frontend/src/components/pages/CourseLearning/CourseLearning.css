@@ -37,6 +37,8 @@
     color: var(--text);
     background-color: transparent;
     border: none;
+    border: none;
+    box-shadow: none;
 }
 
 .lesson-toggle-btn:hover {
@@ -58,6 +60,7 @@
     padding-left: 8rem;
     margin-top: 1rem;
     cursor: pointer;
+    color: var(--text-muted);
 }
 
 .task-name {

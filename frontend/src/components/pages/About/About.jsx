@@ -9,17 +9,14 @@ export default function About() {
     <div className="static-page">
       <header className="static-header">
         <h1>{t("welcome_to_skillway")}</h1>
-        <p>Your go-to source for information and resources.</p>
+        <p>{t("your_go_to_source")}</p>
       </header>
 
       <main className="static-content">
         <section>
-          <h2>About Skillway</h2>
+          <h2>{t("about_skillway")}</h2>
           <p>
-            Skillway is a platform dedicated to helping learners acquire skills
-            efficiently through interactive courses and practical tasks. Our
-            mission is to empower students to reach their full potential and
-            achieve their educational goals.
+            {t("skillway_description")}
           </p>
         </section>
         <Block className="poster-block">
@@ -28,27 +25,24 @@ export default function About() {
 
         <Block className="bottom-section">
           <article>
-            <h2>Our Services</h2>
+            <h2>{t("our_services")}</h2>
             <ul>
-              <li>Online courses</li>
-              <li>
-                Interactive Learning with MCQs, plots and other all kinds of
-                tasks
-              </li>
-              <li>Progress tracking and achievements</li>
-              <li>Leaderboards</li>
+              <li>{t("online_courses")}</li>
+              <li>{t("interactive_learning")}</li>
+              <li>{t("progress_tracking")}</li>
+              <li>{t("leaderboards")}</li>
             </ul>
           </article>
 
           <article>
-            <h2>Contacts</h2>
+            <h2>{t("contacts")}</h2>
             <ul>
-              <span>Email:</span>
+              <span>{t("email")}:</span>
               <li>sultanbaibolov1@gmail.com</li>
               <li>sultan_k@gmail.com</li>
             </ul>
             <ul>
-              <span>Phone:</span>
+              <span>{t("phone")}:</span>
               <li>+7 (776) 286 86 73</li>
               <li>+7 (705) 967 02 37</li>
             </ul>

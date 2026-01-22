@@ -26,7 +26,6 @@
   }
   
   .leaderboard-table th {
-    color: white;
     font-weight: bold;
   }
   
@@ -36,6 +35,7 @@
   
   .leaderboard-table tr:hover {
     background-color: var(--secondary);
+    color: var(--bg);
     cursor: default;
   }
   

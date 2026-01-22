@@ -7,14 +7,14 @@ import Spinner from "../../UI/Spinner/Spinner";
 import Block from "../../UI/Block/Block";
 import Button from "../../UI/Button/Button";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [myCourses, setMyCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) return;
@@ -37,8 +37,6 @@ export default function Dashboard() {
         );
 
         setMyCourses(coursesData);
-
-        // const currentLesson = await LessonListService.
       } catch (err) {
         console.error("Error fetching courses:", err);
       } finally {
@@ -50,13 +48,13 @@ export default function Dashboard() {
   }, [user]);
 
   const resume = (courseId) => {
-    navigate(`/courses/${courseId}/learn`)
-  }
+    navigate(`/courses/${courseId}/learn`);
+  };
 
   const dropCourse = async (enrollmentId) => {
-    await EnrollService.dropCourse(enrollmentId)
-    setMyCourses([])
-  }
+    await EnrollService.dropCourse(enrollmentId);
+    setMyCourses([]);
+  };
 
   if (!user || loading) {
     return <Spinner />;
@@ -64,8 +62,8 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      <h1>Keep learning</h1>
-      {myCourses.length == 0 && <h3>You are not enrolled in any course yet</h3>}
+      <h1>{t("keep_learning")}</h1>
+      {myCourses.length === 0 && <h3>{t("no_enrolled_courses")}</h3>}
       <div className="dashboard__courses-list">
         {myCourses.map(({ course, enrollment }) => (
           <Block key={course.id} className="dashboard-course-card">
@@ -77,15 +75,17 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="dashboard-course-info">
-              <p>Course</p>
+              <p>{t("course")}:</p>
               <h2>{course.name} &nbsp;&nbsp;&nbsp;&nbsp; &gt;</h2>
-              {/* <p>Current lesson: </p> */}
             </div>
-            <Button className="drop-course-btn" onClick={() => dropCourse(enrollment.id)}>&gt; Drop course</Button>
-            <Button className="dashboard-resume-btn" onClick={() => resume(course.id)}>Resume</Button>
+            <Button className="drop-course-btn" onClick={() => dropCourse(enrollment.id)}>
+              &gt; {t("drop_course")}
+            </Button>
+            <Button className="dashboard-resume-btn" onClick={() => resume(course.id)}>
+              {t("resume")}
+            </Button>
           </Block>
         ))}
-
       </div>
     </div>
   );

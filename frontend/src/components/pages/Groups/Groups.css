@@ -3,6 +3,10 @@
   color: var(--text);
 }
 
+.search-results {
+  /* color: var(--text-muted); */
+}
+
 .groups-page {
   padding: 4rem 8rem;
 }
@@ -98,7 +102,7 @@
 .group-block {
   margin-top: 3rem;
   color: var(--text);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); */
   padding: 3rem;
   /* max-width: 420px; */
 }
@@ -127,7 +131,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .group-member:last-child {

@@ -94,7 +94,7 @@ export default class AuthService {
     }
     static async getUser(userId) {
       const response = await api.get(`accounts/users/${userId}`)
-      console.log("User", response.data)
+      // console.log("User", response.data)
       return response.data
     }
 }

@@ -1,17 +1,15 @@
 import classes from './Feature1.module.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Feature1() {
+  const { t } = useTranslation();
+
   return (
-    <section
-      className={classes.container}
-    >
+    <section className={classes.container}>
       <div className={`${classes["text-container"]}`}>
-        <h2>Learn the Way That Fits You</h2>
+        <h2>{t("feature1_heading")}</h2>
         <p className={`${classes.paragraph} text`}>
-          SkillWay is an adaptive online learning platform that personalizes
-          your educational journey. Whether you're mastering mathematics,
-          coding, or science, SkillWay adjusts to your level and pace — making
-          every lesson effective and engaging.
+          {t("feature1_text")}
         </p>
       </div>
       <div className={`${classes["img-container"]}`}>

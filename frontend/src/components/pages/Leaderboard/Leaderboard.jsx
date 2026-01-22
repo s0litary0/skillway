@@ -4,10 +4,11 @@ import "./Leaderboard.css";
 import LeaderboardService from "../../../services/Leaderboard";
 import AuthService from "../../../services/AuthService";
 import { useAuth } from "../../../hooks";
-import Block from "../../UI/Block/Block"
-
+import Block from "../../UI/Block/Block";
+import { useTranslation } from "react-i18next";
 
 export default function Leaderboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [leaderboard, setLeaderboard] = useState(null);
   const [entries, setEntries] = useState([]);
@@ -31,41 +32,41 @@ export default function Leaderboard() {
           await LeaderboardService.getLeaderboardEntriesByLeaderboardId(
             leaderboardData.id,
           );
-          
-            const enrichedEntries = await Promise.all(
-              entries.map(async (entry) => {
-                const userData = await AuthService.getUser(entry.user)
-                return {
-                  ...entry,
-                  user: userData,
-                }
-              })
-            )
-            
-            setEntries(enrichedEntries)
+
+        const enrichedEntries = await Promise.all(
+          entries.map(async (entry) => {
+            const userData = await AuthService.getUser(entry.user)
+            return {
+              ...entry,
+              user: userData,
+            }
+          })
+        )
+
+        setEntries(enrichedEntries)
       } catch (err) {
         console.error(err);
-        setError("Failed to load leaderboard");
+        setError(t("failed_to_load_leaderboard"));
       } finally {
         setLoading(false);
       }
     };
 
     loadLeaderboard();
-  }, [user]);
+  }, [user, t]);
 
   if (loading || !leaderboard) return <Spinner />;
   if (error) return <p className="error">{error}</p>;
 
   return (
     <Block className="leaderboard-page">
-      <h1>Leaderboard: {leaderboard.type}</h1>
+      <h1>{t("leaderboard")}: {leaderboard.type}</h1>
       <table className="leaderboard-table">
         <thead>
           <tr>
-            <th>Place</th>
-            <th>Username</th>
-            <th>Courses Completed</th>
+            <th>{t("place")}</th>
+            <th>{t("username")}</th>
+            <th>{t("courses_completed")}</th>
           </tr>
         </thead>
         <tbody>

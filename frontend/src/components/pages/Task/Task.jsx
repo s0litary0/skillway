@@ -8,10 +8,11 @@ import Button from "../../UI/Button/Button";
 import Block from "../../UI/Block/Block";
 import { useAuth } from "../../../hooks";
 import "./Task.css";
+import { useTranslation } from "react-i18next";
 
 export default function Task() {
+  const { t } = useTranslation();
   const { user } = useAuth();
-  // console.log(user)
   const { courseId, taskId } = useParams();
   const navigate = useNavigate();
 
@@ -30,19 +31,15 @@ export default function Task() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log("TaskId", taskId);
         const taskData = await TaskService.getTask(taskId);
         setTask(taskData);
 
-        const lessonData = await LessonListService.getLessonById(
-          taskData.lesson,
-        );
+        const lessonData = await LessonListService.getLessonById(taskData.lesson);
         setLesson(lessonData);
 
         const mcqData = await MCQService.getMCQByTaskId(taskId);
         setMcq(mcqData[0]);
 
-        // Check if user has previous submission
         if (!user) return;
         const submission = await TaskService.getUserSubmission(user.id, taskId);
         if (submission) {
@@ -56,36 +53,28 @@ export default function Task() {
         }
       } catch (err) {
         console.error(err);
-        setError("Failed to load task");
+        setError(t("task_load_failed"));
       } finally {
         setLoading(false);
       }
     };
 
     loadData();
-  }, [taskId, user]);
+  }, [taskId, user, t]);
 
-  // Submit MCQ answer
   const handleSubmit = async () => {
     if (!selectedOption) return;
 
-    // if (selectedOption == result.anwer) return;
-
     try {
-      const response = await TaskService.submitTaskAnswer(
-        user.id,
-        taskId,
-        selectedOption,
-      );
+      const response = await TaskService.submitTaskAnswer(user.id, taskId, selectedOption);
       setResult(response);
       setSubmitted(true);
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.detail || "Submission failed");
+      setError(err.response?.data?.detail || t("submission_failed"));
     }
   };
 
-  // Retry submission
   const handleRetry = () => {
     setSubmitted(false);
     setSelectedOption(null);
@@ -93,19 +82,16 @@ export default function Task() {
   };
 
   if (loading) return <Spinner />;
-  // if (error) return <p className="error">{error}</p>;
 
   const canRetry = submitted && !result?.is_correct;
-
-  // console.log(selectedOption)
 
   return (
     <div className="task-page">
       {/* Sidebar */}
       <Block className="side-panel">
-        <h4>{lesson.name} tasks</h4>
+        <h4>{t("tasks")} {lesson?.name}</h4>
         <ul>
-          {lesson.tasks.map((t) => (
+          {lesson?.tasks.map((t) => (
             <li
               key={t.id}
               className={`${t.id == taskId ? "current-task" : ""} side-panel__task`}
@@ -118,23 +104,19 @@ export default function Task() {
 
       {/* Task card */}
       <Block className="task-card">
-        <h1>{task.name}</h1>
-        <p className="task-description">{task.description}</p>
+        <h1>{task?.name}</h1>
+        <p className="task-description">{task?.description}</p>
 
         {/* MCQ */}
         <div className="mcq-question">
-          <h3>{mcq.question}</h3>
+          <h3>{mcq?.question}</h3>
 
           {["A", "B", "C", "D"].map((option) => (
             <label
               key={option}
               className={`mcq-option
-                ${submitted && option == result?.answer && result?.is_correct ? "correct" : ""}
-                ${
-                  submitted && option === selectedOption && !result?.is_correct
-                    ? "incorrect"
-                    : ""
-                }
+                ${submitted && option === result?.answer && result?.is_correct ? "correct" : ""}
+                ${submitted && option === selectedOption && !result?.is_correct ? "incorrect" : ""}
               `}
             >
               <span>{option}.</span>
@@ -144,10 +126,10 @@ export default function Task() {
                 value={option}
                 disabled={submitted && result?.is_correct}
                 onChange={() => setSelectedOption(option)}
-                checked={selectedOption == option}
-                className={`${selectedOption == option ? "correct-radio" : ""}`}
+                checked={selectedOption === option}
+                className={`${selectedOption === option ? "correct-radio" : ""}`}
               />
-              {mcq[`option_${option.toLowerCase()}`]}
+              {mcq ? mcq[`option_${option.toLowerCase()}`] : ""}
             </label>
           ))}
         </div>
@@ -155,19 +137,13 @@ export default function Task() {
         {/* Action / Feedback */}
         {submitted && (
           <>
-            <div
-              className={`mcq-feedback-explanation ${result?.is_correct ? "success" : "error"}`}
-            >
+            <div className={`mcq-feedback-explanation ${result?.is_correct ? "success" : "error"}`}>
               <p>
-                {result?.is_correct
-                  ? `${mcq.correct_option}) Correct!`
-                  : "Incorrect"}
+                {result?.is_correct ? `${mcq?.correct_option}) ${t("correct")}` : t("incorrect")}
               </p>
               {error && <p>{error}</p>}
             </div>
-            <div className="mcq-explanation">
-              {mcq?.explanation && <p>{mcq.explanation}</p>}
-            </div>
+            {mcq?.explanation && result?.is_correct && <div className="mcq-explanation"><p>{mcq.explanation}</p></div>}
           </>
         )}
 
@@ -175,33 +151,28 @@ export default function Task() {
         <div className="nav-buttons">
           {!submitted ? (
             <Button onClick={handleSubmit} className="submit-btn" disabled={!selectedOption}>
-              Submit Answer
+              {t("submit_answer")}
             </Button>
           ) : (
             canRetry && (
               <Button className="try-again" onClick={handleRetry}>
-                Try Again
+                {t("try_again")}
               </Button>
             )
           )}
           <Button
             className="prev-btn"
-            disabled={task.order === 1}
-            onClick={() =>
-              navigate(`/courses/${courseId}/learn/task/${Number(taskId) - 1}`)
-            }
+            disabled={task?.order === 1}
+            onClick={() => navigate(`/courses/${courseId}/learn/task/${Number(taskId) - 1}`)}
           >
-            Previous
+            {t("previous")}
           </Button>
-
           <Button
             className="next-btn"
-            disabled={task.order === lesson.tasks.length}
-            onClick={() =>
-              navigate(`/courses/${courseId}/learn/task/${Number(taskId) + 1}`)
-            }
+            disabled={task?.order === lesson?.tasks.length}
+            onClick={() => navigate(`/courses/${courseId}/learn/task/${Number(taskId) + 1}`)}
           >
-            Next
+            {t("next")}
           </Button>
         </div>
       </Block>

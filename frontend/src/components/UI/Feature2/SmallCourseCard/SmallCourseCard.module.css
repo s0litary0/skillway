@@ -39,7 +39,11 @@
   height: 15rem;
   object-fit: cover;
   background-color: var(--text);
-  border: 0.5rem solid #ffffff;
+  border: 0.3rem solid var(--border);
   border-radius: 1rem 1rem 0 0;
   flex: 0 0 1;
 }
+
+/* .textArea p {
+  flex: 1;
+} */

@@ -1,8 +1,9 @@
 import { useSearchParams } from "react-router-dom";
-import "./Search.css"
-
+import "./Search.css";
+import { useTranslation } from "react-i18next";
 
 export default function SearchComponent({ placeholder }) {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("search") || "";
 
@@ -11,7 +12,7 @@ export default function SearchComponent({ placeholder }) {
     const params = Object.fromEntries([...searchParams]);
 
     if (value.trim() === "") {
-      delete params.search
+      delete params.search;
     } else {
       params.search = value;
     }
@@ -22,12 +23,12 @@ export default function SearchComponent({ placeholder }) {
     <div className="search-container">
       <input
         type="text"
-        placeholder={placeholder ? placeholder : "Search courses..."}
+        placeholder={placeholder ? placeholder : t("search_courses")}
         value={query}
         onChange={handleChange}
         className="search-input"
       />
-      <img src="icons/search.svg" alt="search-icon"/>
+      <img src="icons/search.svg" alt={t("search_icon")} />
     </div>
   );
 }
