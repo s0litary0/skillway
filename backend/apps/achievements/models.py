@@ -4,20 +4,13 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Achievement(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=64)
     description = models.TextField()
-    icon = models.ImageField()
-    criteria_type = models.ForeignKey('AchievementCriteria', on_delete=models.PROTECT)
-    criteria_value = models.IntegerField()
+    icon = models.ImageField(upload_to="achievements_icons")
 
     def __str__(self):
-        return f"{self.name}: {self.criteria_type, self.criteria_value}"
+        return f"name: {self.name}"
 
-class AchievementCriteria(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self): 
-        return self.name
 
 class UserAchievement(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -29,15 +22,20 @@ class UserAchievement(models.Model):
     
 
 class Leaderboard(models.Model):
-    type = models.CharField(max_length=20)
+    class TypeChoices(models.TextChoices):
+        WORLD = "W", "World"
+        REGIONAL = "R", "Regional"
+        GROUP = "G", "Group"
+
+    type = models.CharField(max_length=1, choices=TypeChoices.choices)
     period_start = models.DateTimeField()
     period_end = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.period_start} - {self.period_end}"
+        return f"type: {self.type} {self.period_start} - {self.period_end}"
     
 class LeaderboardEntry(models.Model):
     leaderboard = models.ForeignKey(Leaderboard, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.DecimalField(max_digits=6, decimal_places=2)
-    rank = models.CharField(max_length=50)
+    score = models.PositiveBigIntegerField()
+    place = models.PositiveBigIntegerField()

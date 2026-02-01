@@ -3,4 +3,4 @@ from .models import Leaderboard, LeaderboardEntry
 
 
 # Register your models here.
-admin.site.register([Leaderboard, LeaderboardEntry])
+# admin.site.register([Leaderboard, LeaderboardEntry])

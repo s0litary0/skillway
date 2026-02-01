@@ -1,110 +1,117 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 class Course(models.Model):
-    DIFFICULTY_LEVELS = [
-        ("E", "EASY"),
-        ("M", "MEDIUM"),
-        ("H", "HARD"),
-    ]
+    class DifficultyChoices(models.TextChoices):
+        EASY = "E", "Easy"
+        MEDIUM = "M", "Medium"
+        HARD = "H", "Hard"
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=64)
     description = models.TextField(null=True)
-    image_base64 = models.TextField(blank=True, null=True)
-    category = models.CharField(max_length=100)
-    difficulty_level = models.CharField(max_length=1, choices=DIFFICULTY_LEVELS)
+    image = models.ImageField(upload_to="course_images/", null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses_taught')
+    learners = models.ManyToManyField(User, through="Enrollment")
+    # category = models.CharField(max_length=64)
+    difficulty = models.CharField(max_length=1, choices=DifficultyChoices.choices, default=DifficultyChoices.EASY)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} (difficulty: {self.difficulty_level})"
+        return f"name: {self.name} author: {self.author.username})"
+
 
 class Enrollment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='enrollments')
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     enrolled_at = models.DateTimeField(auto_now_add=True)
-    progress = models.DecimalField(max_digits=6, decimal_places=2, default=0.00) # type: ignore
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'course'], name='unique_user_course')
-        ]
+    progress = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
     def __str__(self):
         return f"{self.user.username} enrolled in {self.course.name}"
     
+
+class Module(models.Model):
+    name = models.CharField(max_length=64)
+    description = models.TextField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="modules")
+    order = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"name: {self.name} course: {self.course.name}"
+    
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    content = models.TextField(blank=True, null=True)
-    order = models.PositiveBigIntegerField(default=1)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="lessons")
+    name = models.CharField(max_length=64)
+    description = models.TextField(null=True)
+    order = models.PositiveIntegerField()
     duration = models.DurationField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta: 
-        ordering = ['order']
-
     def __str__(self):
-        return f"{self.name} (course: {self.course.name})"
+        return f"name: {self.name} order: {self.order} course: {self.course}"
+
+class LessonBlock(models.Model):
+    class BlockChoices(models.TextChoices):
+        TEXT = "TEXT", "Text"
+        IMAGE = "IMAGE", "Image"
+        VIDEO = "VIDEO", "Video"
+        TASK = "TASK", "Task"
+
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="blocks")
+    type = models.CharField(max_length=20, choices=BlockChoices.choices)
+    order = models.PositiveIntegerField()
+    data = models.JSONField()
+
+
 
 class Task(models.Model):
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='tasks')
-    task_type = models.ForeignKey('TaskType', on_delete=models.SET_NULL, null=True, related_name='tasks')
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    content = models.TextField(blank=True, null=True)
-    order = models.PositiveIntegerField(default=1)
-    max_score = models.PositiveBigIntegerField(default=0)
-    pass_score = models.PositiveBigIntegerField(default=0)
+    block = models.OneToOneField(LessonBlock, on_delete=models.CASCADE, related_name="task")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        ordering = ['order']
-
     def __str__(self):
-        return f"{self.name} (task_type: {self.task_type.name if self.task_type else 'null'})"
+        return f""
 
-
-class TaskType(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(null=True)
-
-    def __str__(self):
-        return self.name
     
 class MultipleChoiceQuestion(models.Model):
-
-    ANSWER_OPTIONS = [
-        ('A', 'Option A'),
-        ('B', 'Option B'),
-        ('C', 'Option C'),
-        ('D', 'Option D'),
-    ]
+    class AnswerChoices(models.TextChoices):
+        A = "A"
+        B = "B"
+        C = "C"
+        D = "D"
 
     task = models.OneToOneField(Task, on_delete=models.CASCADE, related_name="mcq")
-    question = models.CharField(max_length=255)
-    option_a = models.CharField(max_length=150)
-    option_b = models.CharField(max_length=150)
-    option_c = models.CharField(max_length=150)
-    option_d = models.CharField(max_length=150)
-    correct_option = models.CharField(max_length=1, choices=ANSWER_OPTIONS)
-    explanation = models.TextField(null=True, blank=True)
+    question = models.CharField(max_length=128)
+    option_a = models.CharField(max_length=64)
+    option_b = models.CharField(max_length=64)
+    option_c = models.CharField(max_length=64)
+    option_d = models.CharField(max_length=64)
+    correct_option = models.CharField(max_length=1, choices=AnswerChoices.choices)
+    explanation = models.TextField(null=True)
+
     def __str__(self):
-        return f"MCQ: {self.question[:50]}..."
+        return f"question: {self.question[:10]}"
+
 
 class Submission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='submissions')
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='submissions')
-    answer = models.CharField(max_length=255)
+    answer = models.CharField(max_length=256)
+    percentage = models.PositiveSmallIntegerField(validators=[
+        MinValueValidator(0),
+        MaxValueValidator(100)
+    ])
     is_correct = models.BooleanField()
     submitted_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ("user", "task")
-
     def __str__(self):
-        return f"{self.user.username} submitted to {self.task.name} and got {self.is_correct}"
+        return f"{self.user.username} submitted to {self.task.name} and got {self.percentage}"
     

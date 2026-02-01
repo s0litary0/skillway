@@ -28,6 +28,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'apps.api',
-    'apps.accounts',
     'apps.courses',
     'apps.achievements',
     'apps.groups',
@@ -93,6 +93,9 @@ DATABASES = {
 }
 
 
+# Custom User model
+AUTH_USER_MODEL = "accounts.User"
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -148,7 +151,7 @@ CORS_ALLOWED_ORIGINS = [
 
 AUTHENTICATION_BACKENDS = [
     # Application custom auth backend
-    'apps.accounts.custom_backend.AuthentificationBackend',
+    # 'apps.accounts.custom_backend.AuthentificationBackend',
 ]
 
 LOGGING = {
