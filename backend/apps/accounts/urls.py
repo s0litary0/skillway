@@ -34,3 +34,21 @@
 # #     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
 # #     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 # # ]
+
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("profiles/", views.profile_list),
+    path("profiles/<int:pk>/", views.profile_details)
+]
+
+
+# bool exists = (a + b > c) && (a + c > b) && (b + c > a);
+
+# if (exists) {
+#     cout << "YES";
+# } else {
+#     cout << "NO";
+# }

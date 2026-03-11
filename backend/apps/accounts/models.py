@@ -21,7 +21,7 @@ class Profile(models.Model):
         RU = "RU", "Russian"
         EN = "EN", "English"
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     avatar = models.ImageField(upload_to="avatars/", null=True)
     language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
 
@@ -30,10 +30,10 @@ class Profile(models.Model):
     
     
 class UserStats(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name="user_stats")
     achievements = models.PositiveIntegerField(default=0)
     courses_in_progress = models.PositiveIntegerField(default=0)
     courses_completed = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"username: {self.user.username} courses_completed: {self.courses_completed}"
+        return f"username: {self.profile} courses_completed: {self.courses_completed}"

@@ -27,6 +27,9 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 INSTALLED_APPS = [
     'apps.accounts',
     'django.contrib.admin',
@@ -42,7 +45,8 @@ INSTALLED_APPS = [
     'apps.groups',
     'rest_framework',
     'rest_framework_simplejwt',
-    'django_filters'
+    'django_filters',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -150,6 +154,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    # default auth backend
+    "django.contrib.auth.backends.ModelBackend",
     # Application custom auth backend
     # 'apps.accounts.custom_backend.AuthentificationBackend',
 ]

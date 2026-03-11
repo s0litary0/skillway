@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
@@ -26,9 +28,9 @@ class Course(models.Model):
 
 class Enrollment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    enrolled_at = models.DateTimeField(auto_now_add=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="enrollments")
     progress = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} enrolled in {self.course.name}"
@@ -51,7 +53,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField(null=True)
     order = models.PositiveIntegerField()
-    duration = models.DurationField()
+    duration = models.DurationField(verbose_name="Lesson time", default=datetime.timedelta(minutes=10))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -109,6 +111,7 @@ class Submission(models.Model):
         MinValueValidator(0),
         MaxValueValidator(100)
     ])
+    selected_answer = models.JSONField()
     is_correct = models.BooleanField()
     submitted_at = models.DateTimeField(auto_now_add=True)
 
