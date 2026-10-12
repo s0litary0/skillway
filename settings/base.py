@@ -23,7 +23,8 @@ DJANGO_AND_THIRD_PARTY_APPS = [
     "django.contrib.staticfiles",
 ]
 PROJECT_APPS = [
-    "apps.abstracts.apps.AbstractsConfig"
+    "apps.abstracts.apps.AbstractsConfig",
+    "apps.courses.apps.CoursesConfig",
 ]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 
@@ -80,6 +81,8 @@ USE_TZ = True
 # Static / Media
 # -----------------------------------------------------
 STATIC_URL = "static/"
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
