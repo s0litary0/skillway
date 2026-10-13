@@ -17,7 +17,7 @@ class AbstractBaseModel(Model):
         """Meta class for AbstractBaseModel"""
         abstract = True
 
-    def delete(self, *args: tuple[Any, ...], **kwargs: dict[Any, Any]) -> None:
+    def delete(self, *args: tuple[Any, ...], **kwargs: dict[Any, Any]) -> None:  # type: ignore
         self.deleted_at = django_timezone.now()
         self.save(update_fields=["deleted_at"])
     
