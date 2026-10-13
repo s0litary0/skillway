@@ -25,6 +25,7 @@ DJANGO_AND_THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     "apps.abstracts.apps.AbstractsConfig",
     "apps.courses.apps.CoursesConfig",
+    "apps.lessons.apps.LessonsConfig"
 ]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 
