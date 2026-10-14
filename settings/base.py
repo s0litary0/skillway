@@ -26,12 +26,8 @@ PROJECT_APPS = [
     "apps.abstracts.apps.AbstractsConfig",
     "apps.auths.apps.AuthsConfig",
     "apps.courses.apps.CoursesConfig",
-<<<<<<< HEAD
-    "apps.lessons.apps.LessonsConfig"
-=======
     "apps.lessons.apps.LessonsConfig",
     "apps.enrollments.apps.EnrollmentsConfig"
->>>>>>> origin/midterm
 ]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 

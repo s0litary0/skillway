@@ -92,7 +92,7 @@ class LessonBlockInline(TabularInline):
     fields = ["id", "name", "description", "order"]
     classes = ["collapse"]
     ordering = ["order"]
-    readonly_fields = ["id"]
+    readonly_fields = ["id", "name", "description"]
 
     show_change_link = True
     extra = MAX_EXTRA_FORMS
@@ -111,14 +111,14 @@ class LessonAdmin(LessonAppModelAdmin):
         "id",
         "name",
         "course__name",
-        "course__author__username",
+        "course__author__email",
         "order",
         "is_deleted",
     ]
     list_display_links = ["name"]
     list_editable = ["order"]
 
-    search_fields = ["name", "course__name", "course__author__username"]
+    search_fields = ["name", "course__name", "course__author__email"]
     search_help_text = "Search by lesson name, course name or course author username"
 
     fieldsets = [
@@ -202,7 +202,8 @@ class TextBlockAdmin(LessonAppModelAdmin):
         "id",
         "text",
         "block_name",
-        "lesson__name"
+        "lesson__name",
+        "is_deleted"
     ]
     list_display_links = ["text", "block_name"]
     # list_editable = ["text"]
@@ -259,7 +260,8 @@ class VideoBlockAdmin(LessonAppModelAdmin):
         "id",
         "video_file",
         "block_name",
-        "lesson__name"
+        "lesson__name",
+        "is_deleted"
     ]
     list_display_links = ["video_file", "block_name"]
     # list_editable = ["text"]
@@ -280,7 +282,7 @@ class VideoBlockAdmin(LessonAppModelAdmin):
             None,
             {
                 "description": "VideoBlock specific information",
-                "fields": ["video"],
+                "fields": [("video", "external_link")],
             }
         ),
         (
@@ -339,7 +341,8 @@ class TestQuestionBlockAdmin(LessonAppModelAdmin):
     list_display = [
         "id",
         "block_name",
-        "lesson__name"
+        "lesson__name",
+        "is_deleted"
     ]
     list_display_links = ["block_name"]
     # list_editable = ["text"]
