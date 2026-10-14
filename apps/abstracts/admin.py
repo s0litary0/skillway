@@ -1,3 +1,5 @@
-from django.contrib import admin
+from django.contrib.admin import site
 
-# Register your models here.
+
+site.disable_action("delete_selected")
+site.empty_value_display = "---"
