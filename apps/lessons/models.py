@@ -5,7 +5,9 @@ from django.db.models import (
     PositiveIntegerField,
     FileField,
     BooleanField,
-    PROTECT
+    PROTECT,
+    CASCADE,
+
 )
 
 from apps.abstracts.models import AbstractBaseModel

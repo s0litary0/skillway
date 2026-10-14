@@ -1,6 +1,6 @@
 import os
 
-from settings.conf import * # noqa
+from settings.conf import *  # noqa
 
 
 # -----------------------------------------------------
@@ -24,8 +24,14 @@ DJANGO_AND_THIRD_PARTY_APPS = [
 ]
 PROJECT_APPS = [
     "apps.abstracts.apps.AbstractsConfig",
+    "apps.auths.apps.AuthsConfig",
     "apps.courses.apps.CoursesConfig",
+<<<<<<< HEAD
     "apps.lessons.apps.LessonsConfig"
+=======
+    "apps.lessons.apps.LessonsConfig",
+    "apps.enrollments.apps.EnrollmentsConfig"
+>>>>>>> origin/midterm
 ]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 
@@ -87,4 +93,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-# AUTH_USER_MODEL = "auths.User"
+AUTH_USER_MODEL = "auths.User"
