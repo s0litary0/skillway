@@ -3,7 +3,7 @@ from django.conf import settings
 from apps.abstracts.models import AbstractBaseModel
 
 class TestQuestionAttempt(AbstractBaseModel):
-    """Model of the test passing attempt by the user"""
+    """Model of the questions block attempt by the user"""
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
