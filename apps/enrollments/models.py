@@ -49,3 +49,21 @@ class LessonProgress(AbstractBaseModel):
 
         def __str__(self):
             return f"{self.enrollment} / {self.lesson}"
+
+
+class LessonBlockProgress(AbstractBaseModel):
+    lesson_progress = models.ForeignKey(
+        LessonProgress, on_delete=models.CASCADE, related_name="block_progress")
+    lesson_block = models.ForeignKey(
+        "lessons.LessonBlock", on_delete=models.CASCADE, related_name="progress")
+    is_completed = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "lesson block progress"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["lesson_progress", "lesson_block"], name="unique_lesson_progress_block"),
+        ]
+
+    def __str__(self):
+        return f"{self.lesson_progress} / {self.lesson_block}"
