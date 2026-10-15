@@ -24,7 +24,7 @@ class Enrollment(AbstractBaseModel):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["student", "course"], name="unique_student_course")
+                fields=["student", "course"], condition=models.Q(deleted_at__isnull=True), name="unique_student_course")
         ]
 
     def __str__(self):
@@ -44,7 +44,7 @@ class LessonProgress(AbstractBaseModel):
         verbose_name_plural = "lesson progress"
         constraints = [
             models.UniqueConstraint(
-                fields=["enrollment", "lesson"], name="unique_enrollment_lesson"),
+                fields=["enrollment", "lesson"], condition=models.Q(deleted_at__isnull=True), name="unique_enrollment_lesson"),
         ]
 
         def __str__(self):
@@ -62,7 +62,7 @@ class LessonBlockProgress(AbstractBaseModel):
         verbose_name_plural = "lesson block progress"
         constraints = [
             models.UniqueConstraint(
-                fields=["lesson_progress", "lesson_block"], name="unique_lesson_progress_block"),
+                fields=["lesson_progress", "lesson_block"], condition=models.Q(deleted_at__isnull=True), name="unique_lesson_progress_block"),
         ]
 
     def __str__(self):
