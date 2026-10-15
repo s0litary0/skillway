@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enrollment, LessonProgress
+from apps.enrollments.models import Enrollment, LessonProgress, LessonBlockProgress
 
 
 @admin.register(Enrollment)
@@ -16,3 +16,10 @@ class LessonProgressAdmin(admin.ModelAdmin):
                     "is_completed", "created_at", "completed_at", "deleted_at"]
     list_filter = ["is_completed"]
     search_fields = ["enrollment__student__username"]
+
+
+@admin.register(LessonBlockProgress)
+class LessonBlockProgressAdmin(admin.ModelAdmin):
+    list_display = ["id", "lesson_progress", "lesson_block",
+                    "is_completed", "created_at", "deleted_at"]
+    list_filter = ["is_completed"]
